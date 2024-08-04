@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Play";
+    src: url("./assets/fonts/Play/Play.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Cyberpunk";
+    src: url(./assets/fonts/Cyberpunk/Cyberpunk.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "BlenderPro";
+    src: url(./assets/fonts/BlenderPro/BlenderPro.ttf) format("truetype");
+}
+
+* {
+    cursor: url(./assets/cursors/arrow.cur), auto;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "BlenderPro", sans-serif;
+    background-color: #c5003c;
+}
+
+button {
+    cursor: url(./assets/cursors/link.cur), pointer;
+}
+
+a {
+    cursor: url(./assets/cursors/link.cur), pointer;
+}

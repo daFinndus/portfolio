@@ -1,0 +1,17 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "main": "index.js", 
+  "scripts": {
+    "frontend": "cd frontend && npm start",
+    "backend": "cd backend && npm start",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "daFinndus",
+  "license": "ISC",
+  "description": "This is my portfolio",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
