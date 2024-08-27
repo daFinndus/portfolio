@@ -1,24 +1,26 @@
 const express = require("express");
 const multer = require("multer");
+const cors = require("cors");
 const app = express();
 const port = 3030;
 
 // Multer config for uploading files to memory
 const upload = multer({ storage: multer.memoryStorage() });
 
+app.use(cors());
+
 // Ping endpoint for health checks
-app.get("/ping", (req, res) => {
+app.get("/ping", (_, res) => {
   res.send("pong");
 });
 
 // Download endpoint for downloading files
-app.get("/download", (req, res) => {
+app.get("/download", (_, res) => {
   res.download("dummies/50MB.zip");
 });
 
 // Upload endpoint for uploading files
 app.post("/upload", upload.single("file"), (req, res) => {
-  console.log("File received:", req.file);
   res.send("File upload complete");
 });
 

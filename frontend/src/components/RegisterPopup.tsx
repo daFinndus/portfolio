@@ -193,11 +193,13 @@ const RegisterPopup = ({ close, change }: RegisterPopupProps) => {
                         onClick={registerUser}
                         text="Register here"
                         title="This is the registration button"
+                        disabled={false}
                     />
                     <FormButton
                         onClick={change}
                         text="I'm a user already"
                         title="Change the form to login"
+                        disabled={false}
                     />
                 </div>
                 <PopupMessage

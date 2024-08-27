@@ -133,16 +133,19 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ close, change }) => {
                         onClick={loginUser}
                         text="Login"
                         title="This is the login button"
+                        disabled={false}
                     />
                     <FormButton
                         onClick={() => showError("This is not implemented yet")}
                         text="Forgot password?"
                         title="This is the forgot password button"
+                        disabled={false}
                     />
                     <FormButton
                         onClick={change}
                         text="I haven't registered yet"
                         title="Change the form to register"
+                        disabled={false}
                     />
                 </div>
                 <PopupMessage
