@@ -11,9 +11,10 @@ module.exports = {
                 link: "url(./assets/cursors/link.cur)",
             },
             fontFamily: {
-                play: ["Play"],
-                cyberpunk: ["Cyberpunk"],
                 blenderpro: ["BlenderPro"],
+                cyberpunk: ["Cyberpunk"],
+                draco: ["Draco"],
+                play: ["Play"],
             },
             textShadow: {
                 sm: "0 1px 2px var(--tw-shadow-color)",

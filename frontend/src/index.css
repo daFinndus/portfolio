@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: "Play";
-    src: url("./assets/fonts/Play/Play.ttf") format("truetype");
+    font-family: "BlenderPro";
+    src: url(./assets/fonts/BlenderPro/BlenderPro.ttf) format("truetype");
 }
 
 @font-face {
@@ -13,8 +13,13 @@
 }
 
 @font-face {
-    font-family: "BlenderPro";
-    src: url(./assets/fonts/BlenderPro/BlenderPro.ttf) format("truetype");
+    font-family: "Draco";
+    src: url(./assets/fonts/Draco/Draco.otf) format("opentype");
+}
+
+@font-face {
+    font-family: "Play";
+    src: url("./assets/fonts/Play/Play.ttf") format("truetype");
 }
 
 * {

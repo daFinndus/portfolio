@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "main": "index.js", 
+  "main": "index.js",
   "scripts": {
     "frontend": "cd frontend && npm start",
     "backend": "cd backend && npm start",
