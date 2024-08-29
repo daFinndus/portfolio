@@ -8,17 +8,14 @@ import ButtonShort from "./ButtonShort";
 import burger from "../assets/icons/hamburger_icon.png";
 
 interface HeaderProps {
-    red: boolean;
     title: string;
 }
 
-const HeaderUniversal = ({ red, title }: HeaderProps) => {
+const HeaderUniversal = ({ title }: HeaderProps) => {
     const [list, setList] = useState(false);
 
     return (
-        <header
-            className={`relative flex h-40 w-full items-center justify-center p-4 ${red ? "bg-cp-red" : "bg-cp-yellow"}`}
-        >
+        <header className="bg-light-black text-cream-white relative flex h-40 w-full items-center justify-center p-4">
             <div className="absolute left-4 hidden flex-col items-center justify-center lg:flex">
                 <ButtonWide
                     onClick={() => setList(true)}
@@ -37,10 +34,10 @@ const HeaderUniversal = ({ red, title }: HeaderProps) => {
                     alt="Hamburger icon"
                 />
             </div>
-            <h1 className="font-cyberpunk text-lg font-bold text-cp-blue shadow-cp-dark-blue text-shadow-default md:text-3xl">
+            <h1 className="text-cream-white shadow-light-gray font-cyberpunk text-lg font-bold text-shadow-default md:text-3xl">
                 {title}
             </h1>
-            <div className="absolute right-8 flex flex-col items-center justify-center text-sm text-cp-dark-red hover:text-cp-blue md:text-2xl">
+            <div className="text-cream-white absolute right-8 flex flex-col items-center justify-center text-sm md:text-2xl">
                 <Clock />
             </div>
             {list && <PageList close={() => setList(false)} />}

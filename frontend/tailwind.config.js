@@ -24,11 +24,12 @@ module.exports = {
             },
             colors: {
                 transparent: "transparent",
-                "cp-dark-red": "#500014",
-                "cp-red": "#c5003c",
-                "cp-yellow": "#fcee0a",
-                "cp-blue": "#55ead4",
-                "cp-dark-blue": "#2f796e",
+                "dark-black": "#060606",
+                "light-black": "#222222",
+                "dark-gray": "#3c3c3c",
+                "medium-gray": "#545454",
+                "light-gray": "#818181",
+                "cream-white": "#fcfbf4",
             },
             keyframes: {
                 blink: {

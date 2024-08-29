@@ -4,7 +4,7 @@ import About from "./About";
 import Skills from "./Skills";
 import Header from "./Header";
 import Projects from "./Projects";
-import Inspiration from "./Inspo";
+import Motivation from "./Motivation";
 
 const Main = () => {
     return (
@@ -13,7 +13,7 @@ const Main = () => {
             <About />
             <Skills />
             <Projects />
-            <Inspiration />
+            <Motivation />
         </>
     );
 };

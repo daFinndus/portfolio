@@ -1,8 +1,22 @@
 import React, { useState, useCallback, useEffect } from "react";
 import CountUp from "react-countup";
 
-import FormButton from "../../components/FormButton";
 import PopupMessage from "../../components/PopupMessage";
+
+const MeasureButton = ({ title, onClick, disabled, text }) => {
+    return (
+        <div className="hover:bg-dark-gray bg-cream-white border-dark-gray group my-3 flex h-12 w-72 items-center justify-center border-2 p-3 text-center duration-700 hover:cursor-link hover:bg-opacity-75 hover:duration-0">
+            <button
+                title={title}
+                className="text-dark-gray group-hover:text-cream-white bg-transparent uppercase"
+                onClick={onClick}
+                disabled={disabled}
+            >
+                {text}
+            </button>
+        </div>
+    );
+};
 
 const Measure = () => {
     const [metrics, setMetrics] = useState({
@@ -146,12 +160,13 @@ const Measure = () => {
     };
 
     return (
-        <div className="flex h-screen min-h-[768px] w-screen items-center justify-center bg-cp-red bg-[radial-gradient(#55ead4,transparent_2px)] [background-size:32px_32px]">
-            <div className="relative flex max-h-screen flex-row items-center justify-center drop-shadow-2xl md:h-auto md:min-w-max md:border-4 md:border-cp-blue md:bg-cp-yellow md:px-10">
-                <div className="relative mx-10 my-7 flex h-full w-full max-w-xl flex-col items-center justify-center text-center text-lg text-cp-blue md:text-xl md:text-cp-red lg:px-0 xl:text-2xl">
+        <div className="bg-cream-white flex h-screen min-h-[768px] w-screen items-center justify-center bg-[radial-gradient(#060606,transparent_2px)] [background-size:32px_32px]">
+            <div className="md:border-dark-gray md:bg-cream-white relative flex max-h-screen flex-row items-center justify-center drop-shadow-2xl md:h-auto md:w-3/5 md:min-w-max md:border-4 md:px-10">
+                <div className="text-dark-gray md:text-dark-gray bg-cream-white mx-10 mb-3 mt-7 flex h-full max-w-xl flex-col items-center justify-center p-3 text-center text-lg">
+                    {" "}
                     <div className="flex flex-row justify-center space-x-10">
                         <div className="relative flex flex-col">
-                            <p>Ping</p>
+                            <strong>Ping</strong>
                             <div className="flex w-32 flex-row justify-center">
                                 <CountUp
                                     duration={5}
@@ -164,7 +179,7 @@ const Measure = () => {
                             </div>
                         </div>
                         <div className="relative flex flex-col">
-                            <p>Download</p>
+                            <strong>Download</strong>
                             <div className="flex w-32 flex-row justify-center">
                                 <CountUp
                                     duration={5}
@@ -177,7 +192,7 @@ const Measure = () => {
                             </div>
                         </div>
                         <div className="relative flex flex-col">
-                            <p>Upload</p>
+                            <strong>Upload</strong>
                             <div className="flex w-32 flex-row justify-center">
                                 <CountUp
                                     duration={5}
@@ -191,7 +206,7 @@ const Measure = () => {
                         </div>
                     </div>
                     <div className="mt-7 w-fit">
-                        <FormButton
+                        <MeasureButton
                             text={
                                 measuring
                                     ? "Measuring..."

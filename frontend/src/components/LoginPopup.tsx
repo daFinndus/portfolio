@@ -79,23 +79,23 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ close, change }) => {
         const { username, password } = formData;
 
         if (!validateLogin(username, password)) {
-            showError("Invalid username or password.");
+            showError("Invalid username or password");
             return;
         }
 
         // Do the login here
         console.log("Check database entries now..");
-        showError("This feature is not implemented yet.");
+        showError("This feature is not implemented yet");
     }, [formData, showError]);
 
     return (
         <div className="fixed top-0 z-10 flex h-screen w-screen items-center justify-center bg-black bg-opacity-90">
-            <div className="relative flex h-fit w-full max-w-[512px] flex-col items-center justify-center border-4 border-cp-blue bg-cp-red px-3 text-cp-red">
+            <div className="bg-light-black relative flex h-fit w-full max-w-[512px] flex-col items-center justify-center border-4 px-3">
                 <div className="mb-16 mt-10 flex flex-col items-center justify-center">
-                    <h1 className="font-cyberpunk text-2xl text-cp-blue shadow-cp-dark-blue text-shadow-sm lg:text-3xl">
+                    <h1 className="text-cream-white shadow-light-gray font-cyberpunk text-2xl text-shadow-sm lg:text-3xl">
                         Dive deep
                     </h1>
-                    <h3 className="absolute top-20 flex w-full justify-center text-lg text-cp-blue">
+                    <h3 className="text-cream-white absolute top-20 flex w-full justify-center text-lg">
                         <span ref={ref}></span>
                     </h3>
                 </div>
@@ -104,7 +104,7 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ close, change }) => {
                         id="username"
                         limit={16}
                         onBlur={() => {}}
-                        onChange={(e) => handleInputChange("username")}
+                        onChange={handleInputChange("username")}
                         onFocus={() => {}}
                         placeholder="Username"
                         value={formData.username}
@@ -113,7 +113,7 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ close, change }) => {
                         id="password"
                         limit={72}
                         onBlur={() => {}}
-                        onChange={(e) => handleInputChange("password")}
+                        onChange={handleInputChange("password")}
                         onFocus={() => {}}
                         placeholder="Password"
                         value={formData.password}

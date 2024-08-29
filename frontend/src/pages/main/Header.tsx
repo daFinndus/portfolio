@@ -25,7 +25,7 @@ const Header = () => {
     }, []);
 
     return (
-        <header className="relative flex h-40 w-full items-center justify-center bg-cp-red p-4">
+        <header className="bg-light-black text-cream-white relative flex h-40 w-full items-center justify-center p-4">
             <div className="absolute left-4 hidden flex-col items-center justify-center lg:flex">
                 <ButtonWide
                     onClick={() =>
@@ -68,10 +68,10 @@ const Header = () => {
                     alt="Hamburger icon"
                 />
             </div>
-            <h1 className="font-cyberpunk text-lg font-bold text-cp-blue shadow-cp-dark-blue text-shadow-default md:text-3xl">
+            <h1 className="shadow-light-gray font-cyberpunk text-lg font-bold text-shadow-sm md:text-3xl">
                 daFinndus'
             </h1>
-            <div className="absolute right-8 flex flex-col items-center justify-center text-sm text-cp-dark-red hover:text-cp-blue md:text-2xl">
+            <div className="absolute right-8 flex flex-col items-center justify-center text-sm md:text-2xl">
                 <Clock />
             </div>
             {list && <PageList close={() => setList(false)} />}

@@ -4,7 +4,7 @@ import Header from "../../components/HeaderUniversal";
 const Speedtest = () => {
     return (
         <>
-            <Header red={false} title="Speedtest" />
+            <Header title="Speedtest" />
             <Measure />
         </>
     );

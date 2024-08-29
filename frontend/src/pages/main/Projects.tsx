@@ -13,7 +13,7 @@ interface ProjectBlockProps {
 
 const ProjectBlock = ({ alt, href, src, text, title }: ProjectBlockProps) => {
     return (
-        <div className="min mb-10 flex h-auto w-3/5 min-w-[296px] flex-row items-center justify-center border-cp-blue bg-black text-center text-cp-red shadow-cp-dark-red md:relative md:w-3/4 md:justify-between md:border-4 md:bg-cp-red md:text-right md:text-cp-blue md:shadow-cp-dark-blue xl:w-1/2">
+        <div className="md:border-dark-gray bg-cream-white text-dark-gray shadow-dark-black mb-10 flex h-auto w-3/5 min-w-[296px] flex-row items-center justify-center p-5 text-center drop-shadow-2xl md:relative md:w-3/4 md:max-w-2xl md:justify-between md:border-4 md:p-0 md:text-right">
             <a href={href}>
                 <div className="flex flex-row items-center md:mr-3">
                     <img
@@ -22,7 +22,7 @@ const ProjectBlock = ({ alt, href, src, text, title }: ProjectBlockProps) => {
                         alt={alt}
                     />
                     <div className="md:w-3/5">
-                        <h1 className="mb-7 font-cyberpunk text-2xl shadow-cp-dark-blue text-shadow-sm md:shadow-cp-dark-red">
+                        <h1 className="shadow-dark-black mb-7 font-cyberpunk text-2xl text-shadow-sm">
                             {title}
                         </h1>
                         <p>{text}</p>
@@ -35,7 +35,7 @@ const ProjectBlock = ({ alt, href, src, text, title }: ProjectBlockProps) => {
 
 const Projects: React.FC = () => {
     return (
-        <div className="flex h-screen min-h-[768px] w-screen flex-col items-center justify-center bg-cp-yellow bg-[radial-gradient(#500014,transparent_1px)] [background-size:32px_32px]">
+        <div className="bg-cream-white flex h-screen min-h-[768px] w-screen flex-col items-center justify-center bg-[radial-gradient(#060606,transparent_2px)] [background-size:32px_32px]">
             <ProjectBlock
                 href="https://github.com/daFinndus/beerpong"
                 title="Beerpong Tracker"

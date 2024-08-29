@@ -17,12 +17,12 @@ const ButtonShort = ({
 }: ButtonShortProps) => {
     return (
         <div
-            className={`group m-3 flex h-12 w-12 cursor-link duration-700 hover:duration-0 ${border ? "border-2 border-cp-blue hover:bg-cp-blue hover:bg-opacity-25" : ""}`}
+            className={`group m-3 flex h-12 w-12 cursor-link duration-700 hover:duration-0 ${border ? "border-cream-white hover:bg-cream-white border-2 hover:bg-opacity-25" : ""}`}
         >
             <button
                 title={title}
                 aria-label={title}
-                className="w-full bg-transparent text-left uppercase text-cp-red focus:outline-none group-hover:text-cp-blue"
+                className="w-full bg-transparent text-left uppercase focus:outline-none"
                 onClick={onClick}
             >
                 <img

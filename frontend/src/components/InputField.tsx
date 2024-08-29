@@ -27,7 +27,7 @@ const InputField = ({
     };
 
     return (
-        <div className="relative flex h-12 w-full flex-row items-center border-2 border-cp-blue bg-cp-yellow pl-3 text-lg text-cp-red">
+        <div className="border-cream-white bg-light-black text-cream-white relative flex h-12 w-full flex-row items-center border-2 pl-3 text-lg">
             <input
                 id={id}
                 value={value}
@@ -36,9 +36,9 @@ const InputField = ({
                 onBlur={onBlur}
                 placeholder={placeholder}
                 maxLength={limit}
-                className="mr-10 w-full bg-transparent placeholder-cp-dark-red placeholder-opacity-75 focus:outline-none"
+                className="placeholder-cream-white mr-10 w-full bg-transparent placeholder-opacity-75 focus:outline-none"
             />
-            <p className="absolute right-2 text-cp-dark-red text-opacity-75">
+            <p className="text-cream-white absolute right-2 text-opacity-75">
                 {remaining}
             </p>
         </div>

@@ -10,11 +10,11 @@ interface ButtonWideProps {
 
 const ButtonWide = ({ alt, onClick, src, text, title }: ButtonWideProps) => {
     return (
-        <div className="group m-1 flex h-12 w-80 cursor-link items-center justify-start border-2 border-transparent p-3 duration-700 hover:border-cp-blue hover:bg-cp-blue hover:bg-opacity-25 hover:duration-0">
+        <div className="hover:border-cream-white hover:bg-cream-white group m-1 flex h-12 w-80 cursor-link items-center justify-start border-2 border-transparent p-3 duration-700 hover:bg-opacity-25 hover:duration-0">
             <button
                 title={title}
                 aria-label={title}
-                className="w-full bg-transparent text-left uppercase text-cp-dark-red focus:outline-none group-hover:text-cp-blue"
+                className="text-cream-white group-hover:text-cream-white w-full bg-transparent text-left uppercase focus:outline-none"
                 onClick={onClick}
             >
                 {text}

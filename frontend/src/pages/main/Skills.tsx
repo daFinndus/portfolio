@@ -25,30 +25,28 @@ interface SkillBlockProps {
 
 const SkillBlock = ({ alt, src, text, title }: SkillBlockProps) => {
     return (
-        <div className="bg-green relative h-fit w-fit">
-            <div className="flex flex-row items-center justify-center border-2 border-cp-blue bg-cp-red p-2 text-cp-yellow md:w-36 md:border-transparent xl:relative xl:h-16 xl:w-52 xl:px-5">
+        <div className="relative h-fit w-fit">
+            <div className="bg-cream-white text-dark-gray flex flex-row items-center justify-center border-2 p-2 md:w-36">
                 <img
                     src={src}
-                    className="h-5 w-5 drop-shadow-2xl md:absolute md:left-2 xl:left-3 xl:h-10 xl:w-10"
+                    className="h-5 w-5 drop-shadow-2xl md:absolute md:left-2"
                     title={title}
                     alt={alt}
                 />
-                <p className="hidden text-lg md:flex xl:pl-5 xl:text-xl">
-                    {text}
-                </p>
+                <p className="hidden text-lg md:flex">{text}</p>
             </div>
-            <div className="absolute bottom-0 right-0 hidden h-5 w-5 translate-x-3 translate-y-3 rotate-45 bg-cp-yellow md:block lg:h-7 lg:w-7 lg:translate-x-5 lg:translate-y-5 xl:h-10 xl:w-10"></div>
+            <div className="bg-dark-gray absolute bottom-0 right-0 hidden h-6 w-6 translate-x-3 translate-y-3 rotate-45 md:block"></div>
         </div>
     );
 };
 
 const Skills: React.FC = () => {
     return (
-        <div className="flex h-screen min-h-[768px] w-screen items-center justify-center bg-cp-red bg-[radial-gradient(#55ead4,transparent_1px)] [background-size:32px_32px] md:bg-[radial-gradient(#55ead4,transparent_2px)]">
-            <div className="flex max-h-screen flex-row items-center justify-center drop-shadow-2xl md:h-auto md:w-3/5 md:min-w-[686px] md:border-4 md:border-cp-blue md:bg-cp-yellow md:px-10 md:pb-10 lg:min-w-[924px] xl:min-w-[1024px]">
-                <div className="mx-10 mt-7 flex h-full w-full max-w-xl flex-col items-center justify-center text-center text-lg text-cp-blue md:text-xl md:text-cp-red lg:px-0 xl:text-2xl">
+        <div className="bg-dark-gray flex h-screen min-h-[768px] w-screen items-center justify-center bg-[radial-gradient(#fcfbf4,transparent_2px)] [background-size:32px_32px]">
+            <div className="md:border-cream-white md:bg-dark-gray flex max-h-screen flex-row items-center justify-center drop-shadow-2xl md:h-auto md:w-3/5 md:min-w-max md:border-4 md:px-10 md:pb-10">
+                <div className="text-cream-white bg-dark-gray mx-10 mt-7 flex h-full w-full max-w-xl flex-col items-center justify-center pb-5 text-center text-lg md:p-0 lg:px-0">
                     {" "}
-                    <h1 className="mb-7 font-cyberpunk text-2xl shadow-cp-dark-blue text-shadow-sm md:shadow-cp-dark-red lg:text-3xl">
+                    <h1 className="shadow-light-black mb-7 font-cyberpunk text-3xl text-shadow-sm">
                         Skills
                     </h1>
                     <p className="mb-5">Alright, let's talk skills.</p>
