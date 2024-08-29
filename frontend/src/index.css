@@ -22,6 +22,11 @@
     src: url("./assets/fonts/Play/Play.ttf") format("truetype");
 }
 
+@font-face {
+    font-family: "VT323";
+    src: url("./assets/fonts/VT323/ttf/vt323-normal.ttf") format("truetype");
+}
+
 * {
     cursor: url(./assets/cursors/arrow.cur), auto;
     box-sizing: border-box;

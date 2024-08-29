@@ -15,6 +15,7 @@ module.exports = {
                 cyberpunk: ["Cyberpunk"],
                 draco: ["Draco"],
                 play: ["Play"],
+                vt323: ["VT323"],
             },
             textShadow: {
                 sm: "0 1px 2px var(--tw-shadow-color)",

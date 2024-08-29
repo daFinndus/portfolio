@@ -1,13 +1,11 @@
-import React from "react";
-
-import Test from "./Test";
+import Measure from "./Measure";
 import Header from "../../components/HeaderUniversal";
 
 const Speedtest = () => {
     return (
         <>
             <Header red={false} title="Speedtest" />
-            <Test />
+            <Measure />
         </>
     );
 };

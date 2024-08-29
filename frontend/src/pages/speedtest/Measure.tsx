@@ -4,7 +4,7 @@ import CountUp from "react-countup";
 import FormButton from "../../components/FormButton";
 import PopupMessage from "../../components/PopupMessage";
 
-const Test = () => {
+const Measure = () => {
     const [metrics, setMetrics] = useState({
         ping: 0,
         downloadSpeed: 0,
@@ -147,43 +147,46 @@ const Test = () => {
 
     return (
         <div className="flex h-screen min-h-[768px] w-screen items-center justify-center bg-cp-red bg-[radial-gradient(#55ead4,transparent_2px)] [background-size:32px_32px]">
-            <div className="relative flex max-h-screen flex-row items-center justify-center drop-shadow-2xl md:h-auto md:w-3/5 md:min-w-max md:border-4 md:border-cp-blue md:bg-cp-yellow md:px-10">
+            <div className="relative flex max-h-screen flex-row items-center justify-center drop-shadow-2xl md:h-auto md:min-w-max md:border-4 md:border-cp-blue md:bg-cp-yellow md:px-10">
                 <div className="relative mx-10 my-7 flex h-full w-full max-w-xl flex-col items-center justify-center text-center text-lg text-cp-blue md:text-xl md:text-cp-red lg:px-0 xl:text-2xl">
-                    <div className="flex flex-row">
-                        <div className="flex flex-col">
+                    <div className="flex flex-row justify-center space-x-10">
+                        <div className="relative flex flex-col">
                             <p>Ping</p>
-                            <div className="flex w-32 flex-row text-end">
+                            <div className="flex w-32 flex-row justify-center">
                                 <CountUp
-                                    className="mx-1 w-full"
-                                    key={metrics.ping}
+                                    duration={5}
                                     end={metrics.ping}
-                                    duration={5}
+                                    key={metrics.ping}
+                                    preserveValue={true}
+                                    separator="."
+                                    suffix=" ms"
                                 />
-                                <p>ms</p>
                             </div>
                         </div>
-                        <div className="flex flex-col">
+                        <div className="relative flex flex-col">
                             <p>Download</p>
-                            <div className="flex w-32 flex-row text-end">
+                            <div className="flex w-32 flex-row justify-center">
                                 <CountUp
-                                    className="mx-1 w-full"
-                                    key={metrics.downloadSpeed}
-                                    end={metrics.downloadSpeed}
                                     duration={5}
+                                    end={metrics.downloadSpeed}
+                                    key={metrics.downloadSpeed}
+                                    preserveValue={true}
+                                    separator="."
+                                    suffix=" MB/s"
                                 />
-                                <p>mbps</p>
                             </div>
                         </div>
-                        <div className="flex flex-col">
+                        <div className="relative flex flex-col">
                             <p>Upload</p>
-                            <div className="flex w-32 flex-row text-end">
+                            <div className="flex w-32 flex-row justify-center">
                                 <CountUp
-                                    className="mx-1 w-full"
-                                    key={metrics.uploadSpeed}
-                                    end={metrics.uploadSpeed}
                                     duration={5}
+                                    end={metrics.uploadSpeed}
+                                    key={metrics.uploadSpeed}
+                                    preserveValue={true}
+                                    separator="."
+                                    suffix=" MB/s"
                                 />
-                                <p>mbps</p>
                             </div>
                         </div>
                     </div>
@@ -210,4 +213,4 @@ const Test = () => {
     );
 };
 
-export default Test;
+export default Measure;
