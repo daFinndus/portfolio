@@ -59,12 +59,12 @@ const PageList = ({ close }: SideBarProps) => {
     return (
         <>
             <div className="fixed top-0 z-10 flex h-screen w-screen items-center justify-center bg-black bg-opacity-90">
-                <div className="border-cream-white bg-light-black relative flex h-fit w-full max-w-[412px] flex-col justify-center border-4 px-3">
+                <div className="relative flex h-fit w-full max-w-[412px] flex-col justify-center border-4 border-cream-white bg-light-black px-3">
                     <div className="mb-8 mt-10 flex flex-col items-center justify-center">
-                        <h1 className="text-cream-white shadow-dark-gray font-cyberpunk text-2xl text-shadow-sm lg:text-3xl">
+                        <h1 className="font-cyberpunk text-2xl text-cream-white shadow-dark-gray text-shadow-sm lg:text-3xl">
                             Check it out
                         </h1>
-                        <h3 className="text-cream-white absolute top-20 text-lg">
+                        <h3 className="absolute top-20 text-lg text-cream-white">
                             <span ref={ref}></span>
                         </h3>
                         <div className="mt-16 flex w-full flex-col items-center gap-1">
@@ -80,6 +80,13 @@ const PageList = ({ close }: SideBarProps) => {
                                 text="Speedtest"
                                 src={""}
                                 title="Check your internet speed"
+                                alt="No icon"
+                            />
+                            <ButtonWide
+                                onClick={() => routePage("/news")}
+                                text="News"
+                                src={""}
+                                title="Check the latest news"
                                 alt="No icon"
                             />
                             <div className="absolute right-0 top-0">

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Main from "./pages/main/Main";
+import News from "./pages/news/News";
 import Speedtest from "./pages/speedtest/Speedtest";
 
 const Supported = () => {
@@ -11,6 +12,7 @@ const Supported = () => {
                 <Routes>
                     <Route path="*" element={<Main />} />
                     <Route path="/speedtest" element={<Speedtest />} />
+                    <Route path="/news" element={<News />} />
                 </Routes>
             </BrowserRouter>
         </>
