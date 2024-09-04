@@ -1,5 +1,3 @@
-import React from "react";
-
 interface FormButtonProps {
     onClick: () => void;
     text: string;
@@ -9,10 +7,10 @@ interface FormButtonProps {
 
 const FormButton = ({ onClick, text, title, disabled }: FormButtonProps) => {
     return (
-        <div className="hover:bg-cream-white bg-dark-gray border-cream-white group my-3 flex h-12 w-full items-center justify-start border-2 p-3 duration-700 hover:cursor-link hover:bg-opacity-75 hover:duration-0">
+        <div className="group my-3 flex h-12 w-full items-center justify-start border-2 border-cream-white bg-dark-gray p-3 duration-700 hover:cursor-link hover:bg-cream-white hover:bg-opacity-75 hover:duration-0">
             <button
                 title={title}
-                className="text-cream-white group-hover:text-dark-gray bg-transparent text-left uppercase"
+                className="bg-transparent text-left uppercase text-cream-white group-hover:text-dark-gray"
                 onClick={onClick}
                 disabled={disabled}
             >

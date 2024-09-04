@@ -1,14 +1,14 @@
-import React, { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import CountUp from "react-countup";
 
 import PopupMessage from "../../components/PopupMessage";
 
 const MeasureButton = ({ title, onClick, disabled, text }) => {
     return (
-        <div className="hover:bg-dark-gray bg-cream-white border-dark-gray group my-3 flex h-12 w-72 items-center justify-center border-2 p-3 text-center duration-700 hover:cursor-link hover:bg-opacity-75 hover:duration-0">
+        <div className="group my-3 flex h-12 w-72 items-center justify-center border-2 border-dark-gray bg-cream-white p-3 text-center duration-700 hover:cursor-link hover:bg-dark-gray hover:bg-opacity-75 hover:duration-0">
             <button
                 title={title}
-                className="text-dark-gray group-hover:text-cream-white bg-transparent uppercase"
+                className="bg-transparent uppercase text-dark-gray group-hover:text-cream-white"
                 onClick={onClick}
                 disabled={disabled}
             >
@@ -160,9 +160,9 @@ const Measure = () => {
     };
 
     return (
-        <div className="bg-cream-white flex h-screen min-h-[768px] w-screen items-center justify-center bg-[radial-gradient(#060606,transparent_2px)] [background-size:32px_32px]">
-            <div className="md:border-dark-gray md:bg-cream-white relative flex max-h-screen flex-row items-center justify-center drop-shadow-2xl md:h-auto md:w-3/5 md:min-w-max md:border-4 md:px-10">
-                <div className="text-dark-gray md:text-dark-gray bg-cream-white mx-10 mb-3 mt-7 flex h-full max-w-xl flex-col items-center justify-center p-3 text-center text-lg">
+        <div className="flex h-screen min-h-[768px] w-screen items-center justify-center bg-cream-white bg-[radial-gradient(#060606,transparent_2px)] [background-size:32px_32px]">
+            <div className="relative flex max-h-screen flex-row items-center justify-center drop-shadow-2xl md:h-auto md:w-3/5 md:min-w-max md:border-4 md:border-dark-gray md:bg-cream-white md:px-10">
+                <div className="mx-10 mb-3 mt-7 flex h-full max-w-xl flex-col items-center justify-center bg-cream-white p-3 text-center text-lg text-dark-gray md:text-dark-gray">
                     {" "}
                     <div className="flex flex-row justify-center space-x-10">
                         <div className="relative flex flex-col">

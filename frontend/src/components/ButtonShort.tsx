@@ -1,5 +1,3 @@
-import React from "react";
-
 interface ButtonShortProps {
     alt: string;
     border: boolean;
@@ -17,7 +15,7 @@ const ButtonShort = ({
 }: ButtonShortProps) => {
     return (
         <div
-            className={`group m-3 flex h-12 w-12 cursor-link duration-700 hover:duration-0 ${border ? "border-cream-white hover:bg-cream-white border-2 hover:bg-opacity-25" : ""}`}
+            className={`group m-3 flex h-12 w-12 cursor-link duration-700 hover:duration-0 ${border ? "border-2 border-cream-white hover:bg-cream-white hover:bg-opacity-25" : ""}`}
         >
             <button
                 title={title}

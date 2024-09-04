@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 import PageList from "../../components/PageList";
 import Clock from "../../components/DigitalClock";
@@ -25,7 +25,7 @@ const Header = () => {
     }, []);
 
     return (
-        <header className="bg-light-black text-cream-white relative flex h-40 w-full items-center justify-center p-4">
+        <header className="relative flex h-40 w-full items-center justify-center bg-light-black p-4 text-cream-white">
             <div className="absolute left-4 hidden flex-col items-center justify-center lg:flex">
                 <ButtonWide
                     onClick={() =>
@@ -68,7 +68,7 @@ const Header = () => {
                     alt="Hamburger icon"
                 />
             </div>
-            <h1 className="shadow-light-gray font-cyberpunk text-lg font-bold text-shadow-sm md:text-3xl">
+            <h1 className="font-cyberpunk text-lg font-bold shadow-light-gray text-shadow-sm md:text-3xl">
                 daFinndus'
             </h1>
             <div className="absolute right-8 flex flex-col items-center justify-center text-sm md:text-2xl">
