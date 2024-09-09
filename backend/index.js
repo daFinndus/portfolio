@@ -1,30 +1,22 @@
 const express = require("express");
-const multer = require("multer");
-const cors = require("cors");
+
+const news = require("./routes/news");
+const measurement = require("./routes/measurement");
+
+require("dotenv").config();
+
 const app = express();
-const port = 3030;
+const port = process.env.PORT;
 
-// Multer config for uploading files to memory
-const upload = multer({ storage: multer.memoryStorage() });
+// Call other scripts
+app.use("/", news);
+app.use("/", measurement);
 
-app.use(cors());
-
-// Ping endpoint for health checks
-app.get("/ping", (_, res) => {
-  res.send("pong");
-});
-
-// Download endpoint for downloading files
-app.get("/download", (_, res) => {
-  res.download("dummies/50MB.zip");
-});
-
-// Upload endpoint for uploading files
-app.post("/upload", upload.single("file"), (req, res) => {
-  res.send("File upload complete");
-});
+if (!port) {
+  console.error("No port in environment variables found.");
+  process.exit(1);
+}
 
 app.listen(port, () => {
-  console.log("Ping, Upload and Download are now reachable.");
   console.log(`Server running at http://localhost:${port}\n`);
 });

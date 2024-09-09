@@ -59,7 +59,7 @@ const Measure = () => {
         const timeStart = Date.now();
 
         try {
-            const response = await fetch("http://localhost:3030/ping");
+            const response = await fetch("/ping");
             if (!response.ok) throw new Error("Ping request failed");
             const ping = Date.now() - timeStart;
 
@@ -77,7 +77,7 @@ const Measure = () => {
         let downloadSpeed = 0;
 
         try {
-            const response = await fetch("http://localhost:3030/download", {
+            const response = await fetch(" /download", {
                 method: "GET",
                 cache: "no-cache",
             });
@@ -115,7 +115,7 @@ const Measure = () => {
             const form = new FormData();
             form.append("file", file);
 
-            const response = await fetch("http://localhost:3030/upload", {
+            const response = await fetch("/upload", {
                 method: "POST",
                 body: form,
                 cache: "no-cache",
