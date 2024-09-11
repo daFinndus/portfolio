@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { validateRegistration } from "../utils/validation";
 import { useScramble } from "use-scramble";
+
 import InputField from "./InputField";
 import FormButton from "./FormButton";
 import PopupMessage from "./PopupMessage";
 import ButtonShort from "./ButtonShort";
-import cross from "../assets/icons/cross.png";
+
+import { ImCross } from "react-icons/im";
 
 const GREETINGS = [
     "Welcome to daFinndus'",
@@ -181,10 +183,9 @@ const RegisterPopup = ({ close, change }: RegisterPopupProps) => {
                 </div>
                 <div className="absolute right-0 top-0">
                     <ButtonShort
-                        alt="Close button"
                         border={false}
+                        icon={ImCross}
                         onClick={close}
-                        src={cross}
                         title="This is the close button"
                     />
                 </div>

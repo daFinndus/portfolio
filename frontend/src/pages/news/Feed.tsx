@@ -1,10 +1,27 @@
 import { useState, useCallback, useEffect } from "react";
 
+import { TbExternalLink } from "react-icons/tb";
+
 import PopupMessage from "../../components/PopupMessage";
+
+interface FeedButtonInterface {
+    url: string;
+}
+
+const FeedButton = ({ url }: FeedButtonInterface) => {
+    return (
+        <div className="group w-fit cursor-link border-2 border-transparent duration-700 hover:bg-opacity-25 hover:duration-0">
+            <a href={url} className="flex flex-row items-center justify-center">
+                <TbExternalLink className="size-5 group-hover:animate-blink" />
+            </a>
+        </div>
+    );
+};
 
 interface FeedBlockProps {
     author: string;
     title: string;
+    publisher: string;
     description: string;
     url: string;
     urlToImage: string;
@@ -14,37 +31,44 @@ interface FeedBlockProps {
 const FeedBlock = ({
     author,
     title,
+    publisher,
     description,
     url,
     urlToImage,
     publishedAt,
 }: FeedBlockProps) => {
     return (
-        <div className="relative mb-10 flex min-h-56 min-w-[296px] items-center justify-center bg-cream-white p-5 text-start text-dark-gray shadow-dark-black drop-shadow-2xl md:max-w-2xl md:border-4 md:border-dark-gray md:p-0">
-            <a href={url}>
-                <div className="flex flex-row md:mx-1">
-                    <div className="flex h-full w-0 drop-shadow-2xl md:min-w-56">
-                        <img
-                            className="hidden h-52 w-52 md:block"
-                            src={urlToImage}
-                            alt="News from the API"
-                        />
-                    </div>
-                    <div className="flex h-full w-full flex-col p-1 text-start md:ml-3 md:w-fit">
-                        <>
-                            <strong className="my-3 font-blenderpro text-xl">
-                                {title}
-                            </strong>
-                            <div className="overflow-scroll">
-                                <p>{description}</p>
-                            </div>
-                            <p className="absolute bottom-1 right-1">
-                                Published {publishedAt} by {author}
-                            </p>
-                        </>
-                    </div>
+        <div className="relative min-h-[472px] w-[312px] items-center justify-center bg-cream-white text-start text-dark-gray shadow-dark-black drop-shadow-2xl md:border-2 md:border-dark-gray">
+            <div className="flex flex-col">
+                <div className="relative flex h-[172px] w-full">
+                    <p className="absolute bottom-6 bg-dark-gray px-5 text-cream-white">
+                        {publisher}
+                    </p>
+                    <img
+                        className="flex w-full items-center justify-center"
+                        src={urlToImage}
+                        alt="News from the API"
+                    />
                 </div>
-            </a>
+                <div className="flex h-full w-full flex-col p-3 text-start md:mx-3 md:w-fit md:p-1">
+                    <>
+                        <strong className="my-3 font-blenderpro text-xl">
+                            {title}
+                        </strong>
+                        <div className="overflow-scroll">
+                            <p>{description}</p>
+                        </div>
+                    </>
+                </div>
+                <div className="absolute bottom-1 left-3">
+                    <p>
+                        {author} - {publishedAt}
+                    </p>
+                </div>
+                <div className="absolute bottom-1 right-1">
+                    <FeedButton url={url} />
+                </div>
+            </div>
         </div>
     );
 };
@@ -66,47 +90,54 @@ const Feed = () => {
         }
     }, [error]);
 
-    const handleError = (message: string) => {
-        console.error(message);
-        showError(message);
-    };
-
-    const fetchNews = async () => {
-        try {
-            const response = await fetch("/news");
-            if (!response.ok) throw new Error("Failed to fetch news");
-
-            const data = await response.json();
-            setNews(data);
-        } catch (err) {
-            handleError("An error occurred while fetching news");
-
-            console.log(err);
-        }
-    };
+    // Function for showing the error message
+    const handleError = useCallback(
+        (message: string) => {
+            console.error(message);
+            showError(message);
+        },
+        [showError],
+    );
 
     useEffect(() => {
+        const fetchNews = async () => {
+            try {
+                const response = await fetch("/news");
+                if (!response.ok) throw new Error("Failed to fetch news");
+
+                const data = await response.json();
+                setNews(data);
+            } catch (err) {
+                handleError("An error occurred while fetching news");
+
+                console.log(err);
+            }
+        };
+
         fetchNews();
-    });
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [handleError]);
 
     return (
-        <>
-            <div className="flex min-h-[768px] w-screen flex-col items-center justify-center bg-cream-white bg-[radial-gradient(#060606,transparent_2px)] pt-16 [background-size:32px_32px]">
+        <div className="flex w-screen items-center justify-center bg-cream-white bg-[radial-gradient(#060606,transparent_2px)] py-16 [background-size:32px_32px]">
+            <div className="flex min-h-[768px] w-screen flex-col gap-y-10 sm:w-[612px] sm:grid-cols-2 sm:gap-x-3 md:grid lg:w-[1024px] lg:grid-cols-3">
                 {news.length > 0 ? (
-                    news.map((data, index) => (
-                        <div>
+                    news.map((article, _) => (
+                        <div className="flex items-center justify-center">
                             <FeedBlock
-                                author={data.author}
-                                title={data.title}
-                                description={data.description}
-                                url={data.url}
-                                urlToImage={data.urlToImage}
-                                publishedAt={data.publishedAt}
+                                author={article.author || "Unknown author"}
+                                title={article.title || "No title"}
+                                publisher={article.publisher || "No publisher"}
+                                description={article.description}
+                                url={article.url}
+                                urlToImage={article.urlToImage}
+                                publishedAt={article.publishedAt}
                             />
                         </div>
                     ))
                 ) : (
-                    <div className="bg-cream-white p-7 drop-shadow-lg">
+                    <div className="flex h-12 w-56 items-center justify-center bg-cream-white p-7 drop-shadow-lg">
                         <p>No news available</p>
                     </div>
                 )}
@@ -116,7 +147,7 @@ const Feed = () => {
                     visible={error.visible}
                 />
             </div>
-        </>
+        </div>
     );
 };
 

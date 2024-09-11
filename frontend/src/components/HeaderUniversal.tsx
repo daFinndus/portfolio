@@ -5,7 +5,7 @@ import Clock from "./DigitalClock";
 import ButtonWide from "./ButtonWide";
 import ButtonShort from "./ButtonShort";
 
-import burger from "../assets/icons/hamburger_icon.png";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 interface HeaderProps {
     title: string;
@@ -18,20 +18,18 @@ const HeaderUniversal = ({ title }: HeaderProps) => {
         <header className="relative flex h-40 w-full items-center justify-center bg-light-black p-4 text-cream-white">
             <div className="absolute left-4 hidden flex-col items-center justify-center lg:flex">
                 <ButtonWide
+                    icon={RxHamburgerMenu}
                     onClick={() => setList(true)}
                     text="See all pages"
-                    src={burger}
                     title="See what this page is made of"
-                    alt="Hamburger icon"
                 />
             </div>
             <div className="absolute left-4 flex flex-col items-center justify-center lg:hidden">
                 <ButtonShort
-                    onClick={() => setList(true)}
                     border={true}
-                    src={burger}
+                    icon={RxHamburgerMenu}
+                    onClick={() => setList(true)}
                     title="See what this page is made of"
-                    alt="Hamburger icon"
                 />
             </div>
             <h1 className="font-cyberpunk text-lg font-bold text-cream-white shadow-light-gray text-shadow-default md:text-3xl">

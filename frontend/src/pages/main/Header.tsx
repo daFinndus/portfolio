@@ -7,8 +7,8 @@ import ButtonShort from "../../components/ButtonShort";
 import LoginPopup from "../../components/LoginPopup";
 import RegisterPopup from "../../components/RegisterPopup";
 
-import user from "../../assets/icons/user.png";
-import burger from "../../assets/icons/hamburger_icon.png";
+import { FaUser } from "react-icons/fa";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const Header = () => {
     const [list, setList] = useState(false);
@@ -28,6 +28,7 @@ const Header = () => {
         <header className="relative flex h-40 w-full items-center justify-center bg-light-black p-4 text-cream-white">
             <div className="absolute left-4 hidden flex-col items-center justify-center lg:flex">
                 <ButtonWide
+                    icon={FaUser}
                     onClick={() =>
                         setFormState({
                             login: true,
@@ -35,37 +36,32 @@ const Header = () => {
                         })
                     }
                     text="Login"
-                    src={user}
                     title="Click to log in to your account"
-                    alt="User icon"
                 />
                 <ButtonWide
+                    icon={GiHamburgerMenu}
                     onClick={() => setList(true)}
                     text="See all pages"
-                    src={burger}
                     title="See what this page is made of"
-                    alt="Hamburger icon"
                 />
             </div>
             <div className="absolute left-4 flex flex-col items-center justify-center lg:hidden">
                 <ButtonShort
+                    border={true}
+                    icon={FaUser}
                     onClick={() =>
                         setFormState({
                             login: true,
                             register: false,
                         })
                     }
-                    border={true}
-                    src={user}
                     title="Click to log in to your account"
-                    alt="User icon"
                 />
                 <ButtonShort
-                    onClick={() => setList(true)}
                     border={true}
-                    src={burger}
+                    icon={GiHamburgerMenu}
+                    onClick={() => setList(true)}
                     title="See what this page is made of"
-                    alt="Hamburger icon"
                 />
             </div>
             <h1 className="font-cyberpunk text-lg font-bold shadow-light-gray text-shadow-sm md:text-3xl">

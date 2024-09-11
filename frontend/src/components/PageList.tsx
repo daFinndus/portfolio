@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 import ButtonWide from "./ButtonWide";
 import ButtonShort from "./ButtonShort";
 
-import cross from "../assets/icons/cross.png";
-import website from "../assets/icons/website.png";
+import { ImCross } from "react-icons/im";
+import { GoHomeFill } from "react-icons/go";
+import { IoNewspaper } from "react-icons/io5";
+import { IoIosSpeedometer } from "react-icons/io";
 
 const SUBTITLE = [
     "Come to see all pages!",
@@ -69,32 +71,28 @@ const PageList = ({ close }: SideBarProps) => {
                         </h3>
                         <div className="mt-16 flex w-full flex-col items-center gap-1">
                             <ButtonWide
+                                icon={GoHomeFill}
                                 onClick={() => routePage("/")}
                                 text="Home"
-                                src={website}
                                 title="Return to the homepage"
-                                alt="Mask icon"
                             />
                             <ButtonWide
+                                icon={IoIosSpeedometer}
                                 onClick={() => routePage("/speedtest")}
                                 text="Speedtest"
-                                src={""}
                                 title="Check your internet speed"
-                                alt="No icon"
                             />
                             <ButtonWide
+                                icon={IoNewspaper}
                                 onClick={() => routePage("/news")}
                                 text="News"
-                                src={""}
                                 title="Check the latest news"
-                                alt="No icon"
                             />
                             <div className="absolute right-0 top-0">
                                 <ButtonShort
-                                    alt="Close button"
                                     border={false}
+                                    icon={ImCross}
                                     onClick={close}
-                                    src={cross}
                                     title="This is the close button"
                                 />
                             </div>

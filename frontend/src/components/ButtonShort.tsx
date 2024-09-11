@@ -1,16 +1,16 @@
+import { IconType } from "react-icons";
+
 interface ButtonShortProps {
-    alt: string;
     border: boolean;
+    icon: IconType;
     onClick: () => void;
-    src: string;
     title: string;
 }
 
 const ButtonShort = ({
-    alt,
     border,
     onClick,
-    src,
+    icon: Icon,
     title,
 }: ButtonShortProps) => {
     return (
@@ -20,14 +20,10 @@ const ButtonShort = ({
             <button
                 title={title}
                 aria-label={title}
-                className="w-full bg-transparent text-left uppercase focus:outline-none"
+                className="flex w-full items-center justify-center bg-transparent text-left uppercase focus:outline-none"
                 onClick={onClick}
             >
-                <img
-                    src={src}
-                    className="h-full w-full p-3 group-hover:animate-blink"
-                    alt={alt}
-                />
+                {Icon && <Icon className="size-4 group-hover:animate-blink" />}
             </button>
         </div>
     );

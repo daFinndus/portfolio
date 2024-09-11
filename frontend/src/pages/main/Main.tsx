@@ -4,6 +4,8 @@ import Header from "./Header";
 import Projects from "./Projects";
 import Motivation from "./Motivation";
 
+import FooterUniversal from "../../components/FooterUniversal";
+
 const Main = () => {
     return (
         <>
@@ -12,6 +14,7 @@ const Main = () => {
             <Skills />
             <Projects />
             <Motivation />
+            <FooterUniversal />
         </>
     );
 };

@@ -1,12 +1,13 @@
+import { IconType } from "react-icons";
+
 interface ButtonWideProps {
-    alt: string;
+    icon: IconType;
     onClick: () => void;
-    src: string;
     text: string;
     title: string;
 }
 
-const ButtonWide = ({ alt, onClick, src, text, title }: ButtonWideProps) => {
+const ButtonWide = ({ onClick, icon: Icon, text, title }: ButtonWideProps) => {
     return (
         <div className="group m-1 flex h-12 w-80 cursor-link items-center justify-start border-2 border-transparent p-3 duration-700 hover:border-cream-white hover:bg-cream-white hover:bg-opacity-25 hover:duration-0">
             <button
@@ -17,11 +18,7 @@ const ButtonWide = ({ alt, onClick, src, text, title }: ButtonWideProps) => {
             >
                 {text}
             </button>
-            <img
-                src={src}
-                className="h-4 w-4 opacity-0 group-hover:animate-blink"
-                alt={alt}
-            />
+            {Icon && <Icon className="size-4 group-hover:animate-blink" />}
         </div>
     );
 };

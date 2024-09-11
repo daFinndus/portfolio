@@ -164,11 +164,12 @@ const Measure = () => {
             <div className="relative flex max-h-screen flex-row items-center justify-center drop-shadow-2xl md:h-auto md:w-3/5 md:min-w-max md:border-4 md:border-dark-gray md:bg-cream-white md:px-10">
                 <div className="mx-10 mb-3 mt-7 flex h-full max-w-xl flex-col items-center justify-center bg-cream-white p-3 text-center text-lg text-dark-gray md:text-dark-gray">
                     {" "}
-                    <div className="flex flex-row justify-center space-x-10">
-                        <div className="relative flex flex-col">
-                            <strong>Ping</strong>
-                            <div className="flex w-32 flex-row justify-center">
+                    <div className="ml-28 flex w-full flex-col items-start justify-center md:ml-0 md:flex-row md:space-x-10">
+                        <div className="flex flex-col">
+                            <div className="relative flex flex-row justify-center md:static md:flex-col">
+                                <strong>Ping</strong>
                                 <CountUp
+                                    className="absolute left-20 w-32 md:static md:ml-1"
                                     duration={5}
                                     end={metrics.ping}
                                     key={metrics.ping}
@@ -178,10 +179,11 @@ const Measure = () => {
                                 />
                             </div>
                         </div>
-                        <div className="relative flex flex-col">
-                            <strong>Download</strong>
-                            <div className="flex w-32 flex-row justify-center">
+                        <div className="flex flex-col">
+                            <div className="relative flex flex-row justify-center md:static md:flex-col">
+                                <strong>Download</strong>
                                 <CountUp
+                                    className="absolute left-20 w-32 md:static md:ml-1"
                                     duration={5}
                                     end={metrics.downloadSpeed}
                                     key={metrics.downloadSpeed}
@@ -191,10 +193,11 @@ const Measure = () => {
                                 />
                             </div>
                         </div>
-                        <div className="relative flex flex-col">
-                            <strong>Upload</strong>
-                            <div className="flex w-32 flex-row justify-center">
+                        <div className="flex flex-col">
+                            <div className="relative flex flex-row justify-center md:static md:flex-col">
+                                <strong>Upload</strong>
                                 <CountUp
+                                    className="absolute left-20 w-32 md:static md:ml-1"
                                     duration={5}
                                     end={metrics.uploadSpeed}
                                     key={metrics.uploadSpeed}

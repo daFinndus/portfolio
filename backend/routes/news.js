@@ -10,8 +10,6 @@ const router = express.Router();
 let news = [];
 let key = process.env.NEWS_API_KEY;
 
-console.log("API key is", key);
-
 // Function for fetching the news
 const fetchNewsFromAPI = async () => {
   try {
@@ -22,12 +20,23 @@ const fetchNewsFromAPI = async () => {
       },
     });
 
-    // Filter all articles that don't have an image
-    cache = response.data.articles.filter(
-      (article) => article.urlToImage !== null
-    );
+    let cache = response.data.articles;
 
-    // Format the date to dd-mm-yyyy
+    // Add the publisher by splitting the title
+    cache = cache.map((article) => {
+      const parts = article.title.split(" - ");
+
+      const title = parts.length > 1 ? parts[0] : null;
+      const publisher = parts.length > 1 ? parts.pop() : null;
+
+      return {
+        ...article,
+        title,
+        publisher,
+      };
+    });
+
+    // Format the date to dd/mm/yyyy
     cache.forEach((article) => {
       article.publishedAt = new Date(article.publishedAt).toLocaleDateString(
         "us-EN"
@@ -43,8 +52,8 @@ const fetchNewsFromAPI = async () => {
   }
 };
 
-// Cronjob for fetching news every 4 hours
-cron.schedule("0 */4 * * *", () => {
+// Cronjob for fetching news every 2 hours
+cron.schedule("0 */2 * * *", () => {
   fetchNewsFromAPI();
 });
 

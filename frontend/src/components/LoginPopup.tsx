@@ -7,7 +7,7 @@ import FormButton from "./FormButton";
 import ButtonShort from "./ButtonShort";
 import PopupMessage from "./PopupMessage";
 
-import cross from "../assets/icons/cross.png";
+import { ImCross } from "react-icons/im";
 
 const GREETINGS = [
     "Welcome back, Choom!",
@@ -90,12 +90,12 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ close, change }) => {
 
     return (
         <div className="fixed top-0 z-10 flex h-screen w-screen items-center justify-center bg-black bg-opacity-90">
-            <div className="bg-light-black relative flex h-fit w-full max-w-[512px] flex-col items-center justify-center border-4 px-3">
+            <div className="relative flex h-fit w-full max-w-[512px] flex-col items-center justify-center border-4 bg-light-black px-3">
                 <div className="mb-16 mt-10 flex flex-col items-center justify-center">
-                    <h1 className="text-cream-white shadow-light-gray font-cyberpunk text-2xl text-shadow-sm lg:text-3xl">
+                    <h1 className="font-cyberpunk text-2xl text-cream-white shadow-light-gray text-shadow-sm lg:text-3xl">
                         Dive deep
                     </h1>
-                    <h3 className="text-cream-white absolute top-20 flex w-full justify-center text-lg">
+                    <h3 className="absolute top-20 flex w-full justify-center text-lg text-cream-white">
                         <span ref={ref}></span>
                     </h3>
                 </div>
@@ -121,10 +121,9 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ close, change }) => {
                 </div>
                 <div className="absolute right-0 top-0">
                     <ButtonShort
-                        alt="Close button"
                         border={false}
+                        icon={ImCross}
                         onClick={close}
-                        src={cross}
                         title="This is the close button"
                     />
                 </div>
