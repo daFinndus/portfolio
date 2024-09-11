@@ -4,10 +4,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
-    "build": "cd frontend && npm run build && cd ../backend && npm start",
-    "frontend": "cd frontend && npm start",
-    "backend": "cd backend && npm run dev",
-    "update": "cd frontend && npm install --verbose -y && cd ../backend && npm install --verbose -y && cd .. && npm install --verbose -y",
+    "build": "cd frontend && npm run build --verbose&& cd ../backend && npm start --verbose",
+    "frontend": "cd frontend && npm start --verbose",
+    "backend": "cd backend && npm run dev --verbose",
+    "update": "cd frontend && npm install --verbose && cd ../backend && npm install --verbose && cd .. && npm install --verbose",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "daFinndus",
