@@ -12,7 +12,7 @@ backend/node_modules/*
 /coverage
 
 # Production
-/build
+frontend/build/*
 
 # misc
 .DS_Store
