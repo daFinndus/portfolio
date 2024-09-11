@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "cd frontend && npm run build && cd ../backend && npm start",
+    "build": "cd frontend && npm run build && cd ../backend && npm start",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
     "frontend": "cd frontend && npm start",
     "backend": "cd backend && npm run dev",
-    "package": "cd frontend && npm install -y && cd ../backend && npm install -y && cd .. && npm install -y",
-    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "package": "cd frontend && npm install --verbose -y && cd ../backend && npm install --verbose -y && cd .. && npm install --verbose -y",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "daFinndus",
