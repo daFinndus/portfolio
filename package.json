@@ -6,6 +6,7 @@
     "start": "cd frontend && npm run build && cd ../backend && npm start",
     "frontend": "cd frontend && npm start",
     "backend": "cd backend && npm run dev",
+    "install": "cd frontend && npm install -y && cd ../backend && npm install -y && cd .. && npm install -y",
     "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
