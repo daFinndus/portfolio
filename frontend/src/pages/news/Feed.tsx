@@ -2,8 +2,6 @@ import { useState, useCallback, useEffect } from "react";
 
 import { TbExternalLink } from "react-icons/tb";
 
-import PopupMessage from "../../components/PopupMessage";
-
 interface FeedButtonInterface {
     url: string;
 }
@@ -121,7 +119,7 @@ const Feed = () => {
 
     return (
         <div className="flex w-screen items-center justify-center bg-cream-white bg-[radial-gradient(#060606,transparent_2px)] py-16 [background-size:32px_32px]">
-            <div className="flex min-h-[768px] w-screen flex-col gap-y-10 sm:w-[612px] sm:grid-cols-2 sm:gap-x-3 md:grid lg:w-[1024px] lg:grid-cols-3">
+            <div className="flex min-h-[768px] flex-col gap-y-10 sm:w-[612px] sm:grid-cols-2 sm:gap-x-3 md:grid lg:w-[1024px] lg:grid-cols-3">
                 {news.length > 0 ? (
                     news.map((article, _) => (
                         <div className="flex items-center justify-center">
@@ -141,11 +139,6 @@ const Feed = () => {
                         <p>No news available</p>
                     </div>
                 )}
-                <PopupMessage
-                    id="err-message"
-                    text={error.message}
-                    visible={error.visible}
-                />
             </div>
         </div>
     );
