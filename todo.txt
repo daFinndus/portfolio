@@ -1,0 +1,5 @@
+✔ Change backend endpoints
+✔ Fix paragraph overlapping with image in about
+Fix internet speedtest
+Improve api requests
+Add certificate and url

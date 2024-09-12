@@ -2,7 +2,7 @@ const Motivation = () => {
     return (
         <div className="flex h-screen min-h-[768px] w-screen items-center justify-center bg-dark-gray bg-[radial-gradient(#fcfbf4,transparent_2px)] [background-size:32px_32px]">
             <div className="flex max-h-screen flex-row items-center justify-center drop-shadow-2xl md:h-auto md:w-3/5 md:min-w-max md:border-4 md:border-cream-white md:bg-dark-gray md:px-10 md:pb-10">
-                <div className="mx-3  mt-7 flex h-full w-full max-w-xl flex-col items-center justify-center bg-dark-gray pb-5 text-center text-lg text-cream-white md:p-0 lg:px-0">
+                <div className="mx-3 flex h-full w-full max-w-xl flex-col items-center justify-center bg-dark-gray py-10 text-center text-lg text-cream-white">
                     <h1 className="mb-7 font-cyberpunk text-3xl shadow-light-black text-shadow-sm">
                         Motivations
                     </h1>
