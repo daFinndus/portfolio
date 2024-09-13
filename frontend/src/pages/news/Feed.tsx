@@ -50,9 +50,9 @@ const FeedBlock = ({
                 </div>
                 <div className="flex h-full w-full flex-col p-3 text-start md:mx-3 md:w-fit md:p-1">
                     <>
-                        <strong className="my-3 font-blenderpro text-xl">
+                        <p className="my-3 font-blenderpro text-lg text-dark-black">
                             {title}
-                        </strong>
+                        </p>
                         <div className="overflow-scroll">
                             <p>{description}</p>
                         </div>
@@ -97,21 +97,21 @@ const Feed = () => {
         [showError],
     );
 
+    const fetchNews = async () => {
+        try {
+            const response = await fetch("/news");
+            if (!response.ok) throw new Error("Failed to fetch news");
+
+            const data = await response.json();
+            setNews(data);
+        } catch (err) {
+            handleError("An error occurred while fetching news");
+
+            console.log(err);
+        }
+    };
+
     useEffect(() => {
-        const fetchNews = async () => {
-            try {
-                const response = await fetch("/news");
-                if (!response.ok) throw new Error("Failed to fetch news");
-
-                const data = await response.json();
-                setNews(data);
-            } catch (err) {
-                handleError("An error occurred while fetching news");
-
-                console.log(err);
-            }
-        };
-
         fetchNews();
 
         // eslint-disable-next-line react-hooks/exhaustive-deps

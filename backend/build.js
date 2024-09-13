@@ -4,7 +4,7 @@ const path = require("path");
 const news = require("./routes/news");
 const measurement = require("./routes/measurement");
 
-require("dotenv").config();
+require("dotenv").config({ path: "../.env" });
 
 const app = express();
 const port = process.env.PORT;

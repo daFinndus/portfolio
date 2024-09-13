@@ -2,7 +2,7 @@ const express = require("express");
 const cron = require("node-cron");
 const axios = require("axios");
 
-require("dotenv").config();
+require("dotenv").config({ path: "./../.env" });
 
 const router = express.Router();
 

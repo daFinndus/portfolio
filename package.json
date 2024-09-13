@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "app": "cd frontend && npm run build --verbose && cd ../backend && npm start --verbose",
     "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
-    "build": "cd frontend && npm run build --verbose && cd ../backend && npm start --verbose",
+    "start": "cd backend && npm run start",
+    "build": "cd frontend && npm run build --verbose",
     "frontend": "cd frontend && npm start --verbose",
     "backend": "cd backend && npm run dev --verbose",
     "update": "cd frontend && npm install --verbose && cd ../backend && npm install --verbose && cd .. && npm install --verbose",

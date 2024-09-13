@@ -48,11 +48,14 @@ const Measure = () => {
         }
     }, [error]);
 
-    const handleError = (message: string) => {
-        console.error(message);
-        showError(message);
-        setMeasuring(false);
-    };
+    // Function for showing the error message
+    const handleError = useCallback(
+        (message: string) => {
+            console.error(message);
+            showError(message);
+        },
+        [showError],
+    );
 
     // This function sends a request to the server to check the ping
     const getPing = async () => {
@@ -60,8 +63,11 @@ const Measure = () => {
 
         try {
             const response = await fetch("/ping");
+            const timeEnd = Date.now();
+
             if (!response.ok) throw new Error("Ping request failed");
-            const ping = Date.now() - timeStart;
+
+            const ping = timeEnd - timeStart;
 
             updateMetric("ping", ping);
             return ping;
@@ -73,28 +79,55 @@ const Measure = () => {
 
     // This function works by downloading a file and measuring the time it takes to download it
     const getDownloadSpeed = async () => {
-        const timeStart = Date.now();
         let downloadSpeed = 0;
+        const timeStart = Date.now();
+        let receivedLength = 0; // To track the size of the data received
 
         try {
-            const response = await fetch(" /download", {
+            const response = await fetch("/download", {
                 method: "GET",
                 cache: "no-cache",
             });
 
             if (!response.ok) throw new Error("Failed to download file");
-            const fileSize = response.headers.get("content-length");
 
-            if (fileSize) {
-                const timeDuration = (Date.now() - timeStart) / 1000;
-                const fileSizeInBits = parseInt(fileSize) * 8;
-                downloadSpeed =
-                    Math.round(
-                        (fileSizeInBits / (1000 * 1000) / timeDuration) * 100,
-                    ) / 100;
-            }
+            const reader = response.body!.getReader();
 
-            updateMetric("download", downloadSpeed);
+            // Recursive function to read data chunks
+            const readChunks = async () => {
+                const { done, value } = await reader.read();
+                if (done) {
+                    const timeEnd = Date.now();
+                    const timeDuration = (timeEnd - timeStart) / 1000;
+
+                    const fileSizeInBits = receivedLength * 8; // Total bits of received data
+
+                    // Calculate download speed in Mbps
+                    downloadSpeed =
+                        Math.round(
+                            (fileSizeInBits / (1000 * 1000) / timeDuration) *
+                                100,
+                        ) / 100;
+
+                    console.log(
+                        `Download completed in ${timeDuration} seconds with a speed of ${downloadSpeed} Mbps`,
+                    );
+
+                    updateMetric("download", downloadSpeed);
+                    return downloadSpeed;
+                }
+
+                // If value is not undefined, add the chunk's length to the total received length
+                if (value) {
+                    receivedLength += value.length;
+                }
+
+                // Continue reading the next chunk
+                readChunks();
+            };
+
+            // Start reading the chunks
+            await readChunks();
             return downloadSpeed;
         } catch (error) {
             handleError("An error occurred while checking for download speed");
@@ -122,8 +155,12 @@ const Measure = () => {
             });
 
             if (!response.ok) throw new Error("Failed to upload file");
-            const timeDuration = (Date.now() - timeStart) / 1000;
-            const fileSizeInBits = file.size * 8;
+
+            const timeEnd = Date.now();
+            const timeDuration = (timeEnd - timeStart) / 1000;
+
+            const fileSizeInBits = file.size * 8; // Convert bytes to bits
+
             uploadSpeed =
                 Math.round(
                     (fileSizeInBits / (1000 * 1000) / timeDuration) * 100,

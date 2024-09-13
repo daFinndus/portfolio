@@ -8,11 +8,11 @@ const upload = multer({ storage: multer.memoryStorage() });
 const router = express.Router();
 
 // Ping endpoint for health checks
-router.get("/ping", (_, res) => {
+router.get("/ping", (req, res) => {
   if (req.ip !== "::1") {
     return res.status(403).send("Access denied");
   } else {
-    res.send("Pong");
+    res.status(200).send("Pong");
   }
 });
 
@@ -30,7 +30,7 @@ router.get("/download", (req, res) => {
       "Content-Length": file,
     });
 
-    res.send(buffer);
+    res.status(200).send(buffer);
   }
 });
 
@@ -39,7 +39,7 @@ router.post("/upload", upload.single("file"), (req, res) => {
   if (req.ip !== "::1") {
     return res.status(403).send("Access denied");
   } else {
-    res.send("File upload complete");
+    res.status(200).send("File upload complete");
   }
 });
 
