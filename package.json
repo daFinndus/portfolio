@@ -1,21 +1,14 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./backend/build.js",
   "scripts": {
     "app": "cd frontend && npm run build --verbose && cd ../backend && npm start --verbose",
-    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
-    "start": "cd backend && npm run start",
+    "start-build": "cd backend && npm run start --verbose",
     "build": "cd frontend && npm run build --verbose",
-    "frontend": "cd frontend && npm start --verbose",
-    "backend": "cd backend && npm run dev --verbose",
-    "update": "cd frontend && npm install --verbose && cd ../backend && npm install --verbose && cd .. && npm install --verbose",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install-packages": "cd frontend && npm i --verbose && cd ../backend && npm i --verbose && cd .. && npm i --verbose"
   },
-  "author": "daFinndus",
+  "author": "Finn Luca Jensen",
   "license": "ISC",
-  "description": "This is my portfolio",
-  "dependencies": {
-    "concurrently": "^8.2.2"
-  }
+  "description": "This is my portfolio"
 }

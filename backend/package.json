@@ -1,15 +1,12 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "build.js",
   "scripts": {
     "dev": "node dev.js",
     "start": "node build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "daFinndus",
-  "license": "ISC",
-  "description": "This is my portfolio",
   "dependencies": {
     "axios": "^1.7.7",
     "dotenv": "^16.4.5",

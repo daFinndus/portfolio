@@ -11,7 +11,6 @@ const Supported = () => {
             <BrowserRouter>
                 <Routes>
                     <Route path="*" element={<Main />} />
-                    <Route path="/speedtest" element={<Speedtest />} />
                     <Route path="/news" element={<News />} />
                 </Routes>
             </BrowserRouter>

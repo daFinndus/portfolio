@@ -59,8 +59,8 @@ cron.schedule("0 */2 * * *", () => {
 
 fetchNewsFromAPI();
 
-// Endpoint for the news
-router.get("/news", (req, res) => {
+// Endpoint for the news articles
+router.get("/articles", (req, res) => {
   if (req.ip !== "::1") {
     return res.status(403).send("Access denied");
   } else {

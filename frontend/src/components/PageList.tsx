@@ -77,12 +77,6 @@ const PageList = ({ close }: SideBarProps) => {
                                 title="Return to the homepage"
                             />
                             <ButtonWide
-                                icon={IoIosSpeedometer}
-                                onClick={() => routePage("/speedtest")}
-                                text="Speedtest"
-                                title="Check your internet speed"
-                            />
-                            <ButtonWide
                                 icon={IoNewspaper}
                                 onClick={() => routePage("/news")}
                                 text="News"

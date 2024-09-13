@@ -5,6 +5,8 @@ const measurement = require("./routes/measurement");
 
 require("dotenv").config({ path: "../.env" });
 
+console.log("Starting server in development mode...\n");
+
 const app = express();
 const port = process.env.PORT;
 
