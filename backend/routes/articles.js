@@ -60,12 +60,8 @@ cron.schedule("0 */2 * * *", () => {
 fetchNewsFromAPI();
 
 // Endpoint for the news articles
-router.get("/articles", (req, res) => {
-  if (req.ip !== "::1") {
-    return res.status(403).send("Access denied");
-  } else {
-    return res.json(news);
-  }
+router.get("/articles", (_, res) => {
+  return res.json(news);
 });
 
 // Export

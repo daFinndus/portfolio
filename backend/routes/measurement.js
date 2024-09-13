@@ -8,39 +8,27 @@ const upload = multer({ storage: multer.memoryStorage() });
 const router = express.Router();
 
 // Ping endpoint for health checks
-router.get("/ping", (req, res) => {
-  if (req.ip !== "::1") {
-    return res.status(403).send("Access denied");
-  } else {
-    res.status(200).send("Pong");
-  }
+router.get("/ping", (_, res) => {
+  res.status(200).send("Pong");
 });
 
 // Download endpoint for downloading files
-router.get("/download", (req, res) => {
-  if (req.ip !== "::1") {
-    return res.status(403).send("Access denied");
-  } else {
-    const fileSize = 50;
-    const file = fileSize * 1024 * 1024;
+router.get("/download", (_, res) => {
+  const fileSize = 50;
+  const file = fileSize * 1024 * 1024;
 
-    const buffer = Buffer.alloc(file);
-    res.set({
-      "Content-Type": "application/zip",
-      "Content-Length": file,
-    });
+  const buffer = Buffer.alloc(file);
+  res.set({
+    "Content-Type": "application/zip",
+    "Content-Length": file,
+  });
 
-    res.status(200).send(buffer);
-  }
+  res.status(200).send(buffer);
 });
 
 // Upload endpoint for uploading files
-router.post("/upload", upload.single("file"), (req, res) => {
-  if (req.ip !== "::1") {
-    return res.status(403).send("Access denied");
-  } else {
-    res.status(200).send("File upload complete");
-  }
+router.post("/upload", upload.single("file"), (_, res) => {
+  res.status(200).send("File upload complete");
 });
 
 console.log("Ping, Upload and Download are now reachable.");

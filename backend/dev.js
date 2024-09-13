@@ -1,6 +1,7 @@
 const express = require("express");
 
-const news = require("./routes/news");
+const articles = require("./routes/news");
+const backend = require("./routes/backend");
 const measurement = require("./routes/measurement");
 
 require("dotenv").config({ path: "../.env" });
@@ -11,7 +12,8 @@ const app = express();
 const port = process.env.PORT;
 
 // Call other scripts
-app.use("/", news);
+app.use("/", articles);
+app.use("/", backend);
 app.use("/", measurement);
 
 if (!port) {

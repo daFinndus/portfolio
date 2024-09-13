@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Main from "./pages/main/Main";
 import News from "./pages/news/News";
-import Speedtest from "./pages/speedtest/Speedtest";
 
 const Supported = () => {
     return (
