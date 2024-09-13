@@ -2,7 +2,6 @@ import About from "./About";
 import Skills from "./Skills";
 import Header from "./Header";
 import Projects from "./Projects";
-import Motivation from "./Motivation";
 
 import FooterUniversal from "../../components/FooterUniversal";
 
@@ -13,7 +12,6 @@ const Main = () => {
             <About />
             <Skills />
             <Projects />
-            <Motivation />
             <FooterUniversal />
         </>
     );
