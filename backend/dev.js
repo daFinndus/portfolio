@@ -1,6 +1,6 @@
 const express = require("express");
 
-const articles = require("./routes/news");
+const articles = require("./routes/articles");
 const backend = require("./routes/backend");
 const measurement = require("./routes/measurement");
 
