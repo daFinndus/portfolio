@@ -75,6 +75,10 @@ const Feed = () => {
     const [news, setNews] = useState<FeedBlockProps[]>([]);
     const [error, setError] = useState({ visible: false, message: "" });
 
+    // This will be the url for our backend
+    // For localhost it will be an empty string
+    const url = process.env.REACT_APP_BACKEND_URL || "";
+
     const showError = useCallback((message: string) => {
         setError({ visible: true, message });
     }, []);
@@ -99,7 +103,7 @@ const Feed = () => {
 
     const fetchNews = async () => {
         try {
-            const response = await fetch("/articles");
+            const response = await fetch(`${url}/articles`);
             if (!response.ok) throw new Error("Failed to fetch news");
 
             const data = await response.json();

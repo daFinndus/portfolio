@@ -6,6 +6,8 @@ const articles = require("./routes/articles");
 const backend = require("./routes/backend");
 const measurement = require("./routes/measurement");
 
+import { reload } from "/routes/backend";
+
 require("dotenv").config({ path: "../.env" });
 
 console.log("Starting server in production mode...\n");
@@ -39,5 +41,8 @@ if (!port) {
 }
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}\n`);
+  console.log(`Server running from port: ${port}\n`);
 });
+
+// Reload the server to avoid renders spindown issue
+setInterval(reload, 1000 * 30);

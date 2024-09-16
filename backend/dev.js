@@ -2,7 +2,6 @@ const express = require("express");
 
 const articles = require("./routes/articles");
 const backend = require("./routes/backend");
-const measurement = require("./routes/measurement");
 
 require("dotenv").config({ path: "../.env" });
 
@@ -14,7 +13,8 @@ const port = process.env.PORT;
 // Call other scripts
 app.use("/", articles);
 app.use("/", backend);
-app.use("/", measurement);
+
+backend.reload("http://localhost:3000");
 
 if (!port) {
   console.error("No port in environment variables found.");
@@ -22,5 +22,5 @@ if (!port) {
 }
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}\n`);
+  console.log(`Server running from port: ${port}\n`);
 });
