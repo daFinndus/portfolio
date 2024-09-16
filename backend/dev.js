@@ -56,4 +56,4 @@ function reload(url) {
 }
 
 // Reload the server to avoid renders spindown issue
-setInterval(reload, 1000 * 30);
+setInterval(reload(process.env.RENDER_URL_PROD), 1000 * 30);
