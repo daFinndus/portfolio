@@ -14,8 +14,6 @@ const port = process.env.PORT;
 app.use("/", articles);
 app.use("/", backend);
 
-backend.reload("http://localhost:3000");
-
 if (!port) {
   console.error("No port in environment variables found.");
   process.exit(1);

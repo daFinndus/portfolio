@@ -4,9 +4,6 @@ const express = require("express");
 
 const articles = require("./routes/articles");
 const backend = require("./routes/backend");
-const measurement = require("./routes/measurement");
-
-import { reload } from "/routes/backend";
 
 require("dotenv").config({ path: "../.env" });
 
@@ -28,7 +25,6 @@ app.use(
 // Call other scripts
 app.use("/", articles);
 app.use("/", backend);
-app.use("/", measurement);
 
 // Handles any requests that don't match the ones above
 app.get("*", (_, res) => {
@@ -43,6 +39,23 @@ if (!port) {
 app.listen(port, () => {
   console.log(`Server running from port: ${port}\n`);
 });
+
+// This function reloads the server to avoid renders spindown issue
+function reload(url) {
+  axios
+    .get(url)
+    .then((response) => {
+      console.log(
+        `Reloaded at ${new Date().toISOString()}: Status ${response.status}`
+      );
+    })
+    .catch((error) => {
+      console.error(
+        `Error reloading at ${new Date().toISOString()}:`,
+        error.message
+      );
+    });
+}
 
 // Reload the server to avoid renders spindown issue
 setInterval(reload, 1000 * 30);
