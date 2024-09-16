@@ -29,6 +29,11 @@ app.use(
 app.use("/", articles);
 app.use("/", backend);
 
+// Universal wrong request handler
+app.use((_, res) => {
+  res.status(404).send("Sorry, this page does not exist.");
+});
+
 if (!port) {
   console.error("No port in environment variables found.");
   process.exit(1);
