@@ -18,11 +18,10 @@ app.use(
     origin: [
       process.env.CROSS_ORIGIN_LOCAL,
       process.env.CROSS_ORIGIN_PUBLIC,
+      process.env.VERCEL_URL,
       process.env.RENDER_URL,
-      process.env.RENDER_URL_PROD,
     ],
     methods: ["GET"],
-    accessControlAllowOrigin: "*",
   })
 );
 
