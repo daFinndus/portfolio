@@ -8,7 +8,7 @@ router.get("/backend", (_, res) => {
 });
 
 // This function reloads the server to avoid renders spindown issue
-export function reload(url) {
+function reload(url) {
   axios
     .get(url)
     .then((response) => {
@@ -25,4 +25,7 @@ export function reload(url) {
 }
 
 // Export
-module.exports = router;
+module.exports = {
+  router,
+  reload,
+};
