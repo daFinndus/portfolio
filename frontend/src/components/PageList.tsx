@@ -8,7 +8,6 @@ import ButtonShort from "./ButtonShort";
 import { ImCross } from "react-icons/im";
 import { GoHomeFill } from "react-icons/go";
 import { IoNewspaper } from "react-icons/io5";
-import { IoIosSpeedometer } from "react-icons/io";
 
 const SUBTITLE = [
     "Come to see all pages!",

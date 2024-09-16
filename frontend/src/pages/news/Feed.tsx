@@ -139,7 +139,7 @@ const Feed = () => {
                         </div>
                     ))
                 ) : (
-                    <div className="absolute left-0 top-16 flex h-screen w-screen items-center justify-center">
+                    <div className="absolute left-0 top-52 flex h-96 w-screen items-center justify-center">
                         <div className="flex h-12 w-56 items-center justify-center bg-cream-white p-7 drop-shadow-lg">
                             <p>No news available</p>
                         </div>
