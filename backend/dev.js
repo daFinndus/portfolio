@@ -19,6 +19,7 @@ app.use(
       process.env.CROSS_ORIGIN_LOCAL,
       process.env.CROSS_ORIGIN_PUBLIC,
       process.env.RENDER_URL,
+      process.env.RENDER_URL_PROD,
     ],
     methods: ["GET"],
   })
