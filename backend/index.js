@@ -21,6 +21,7 @@ app.use(
       process.env.RENDER_URL_PROD,
     ],
     methods: ["GET"],
+    accessControlAllowOrigin: "*",
   })
 );
 
