@@ -15,9 +15,14 @@ const port = process.env.PORT;
 // Serve the static files from the React app
 app.use(express.static(path.resolve(__dirname, "../frontend/build")));
 
+// Add CORS for limited backend access
 app.use(
   cors({
-    origin: [process.env.CROSS_ORIGIN_LOCAL, process.env.CROSS_ORIGIN_PUBLIC],
+    origin: [
+      process.env.CROSS_ORIGIN_LOCAL,
+      process.env.CROSS_ORIGIN_PUBLIC,
+      process.env.RENDER_URL,
+    ],
     methods: ["GET"],
   })
 );

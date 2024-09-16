@@ -1,3 +1,4 @@
+const cors = require("cors");
 const axios = require("axios");
 const express = require("express");
 
@@ -10,6 +11,18 @@ console.log("Starting server in development mode...\n");
 
 const app = express();
 const port = process.env.PORT;
+
+// Add CORS for limited backend access
+app.use(
+  cors({
+    origin: [
+      process.env.CROSS_ORIGIN_LOCAL,
+      process.env.CROSS_ORIGIN_PUBLIC,
+      process.env.RENDER_URL,
+    ],
+    methods: ["GET"],
+  })
+);
 
 // Call other scripts
 app.use("/", articles);
