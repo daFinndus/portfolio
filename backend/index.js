@@ -42,9 +42,10 @@ app.listen(port, () => {
 // This function reloads the server to avoid renders spindown issue
 function reload() {
   const url = process.env.RENDER_URL;
+  console.log("Reloading website on:", url);
 
   axios
-    .get(url)
+    .get(url + "/backend")
     .then((response) => {
       console.log(
         `Reloaded at ${new Date().toISOString()}: Status ${response.status}`
