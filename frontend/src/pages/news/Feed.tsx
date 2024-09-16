@@ -77,7 +77,7 @@ const Feed = () => {
 
     // This will be the url for our backend
     // For localhost it will be an empty string
-    const url = process.env.REACT_APP_NEWS_URL || "";
+    const url = process.env.REACT_APP_RENDER_URL || "";
 
     const showError = useCallback((message: string) => {
         setError({ visible: true, message });

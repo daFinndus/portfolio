@@ -16,12 +16,13 @@ const port = process.env.PORT;
 app.use(
   cors({
     origin: [
-      process.env.CROSS_ORIGIN_LOCAL,
-      process.env.CROSS_ORIGIN_PUBLIC,
+      process.env.LOCAL_IP,
+      process.env.PUBLIC_IP,
       process.env.RENDER_URL,
-      process.env.RENDER_URL_PROD,
+      process.env.VERCEL_URL,
     ],
     methods: ["GET"],
+    allowedHeaders: ["Content-Type"],
   })
 );
 
