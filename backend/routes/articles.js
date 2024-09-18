@@ -22,6 +22,10 @@ const fetchNewsFromAPI = async () => {
 
     let cache = response.data.articles;
 
+    // Remove all articles where the link is https://removed.com
+    const forbidden = "https://removed.com";
+    cache = cache.filter((article) => article.url !== forbidden);
+
     // Add the publisher by splitting the title
     cache = cache.map((article) => {
       const parts = article.title.split(" - ");
