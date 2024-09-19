@@ -10,11 +10,15 @@ interface ThrobberProps {
 const Throbber = ({ loading, throbber }: ThrobberProps) => {
     return (
         <div
-            className={`absolute z-10 ${
+            className={`${
                 loading ? "opacity-100" : "opacity-0"
-            } ${throbber ? "block" : "hidden"} left-0 top-40 flex h-screen w-screen items-center justify-center bg-cream-white transition-opacity duration-1000`}
+            } fixed z-10 ${throbber ? "block" : "hidden"} left-0 top-0 flex h-full min-h-[100%] w-screen items-center justify-center bg-dark-gray bg-[radial-gradient(#fcfbf4,transparent_2px)] py-16 transition-opacity duration-1000 [background-size:32px_32px]`}
         >
-            <l-grid size="128" speed="1.5" color="#3c3c3c"></l-grid>
+            <div className="item-center relative flex h-52 w-52 justify-center rounded-full bg-dark-gray p-8 shadow-dark-black drop-shadow-2xl">
+                <div className="absolute top-12">
+                    <l-grid size="128" speed="1.5" color="#fcfbf4"></l-grid>
+                </div>
+            </div>
         </div>
     );
 };

@@ -15,7 +15,7 @@ const HeaderUniversal = ({ title }: HeaderProps) => {
     const [list, setList] = useState(false);
 
     return (
-        <header className="relative flex h-40 w-full items-center justify-center bg-light-black p-4 text-cream-white">
+        <header className="relative z-20 flex h-40 w-full items-center justify-center bg-light-black p-4 text-cream-white">
             <div className="absolute left-4 hidden flex-col items-center justify-center lg:flex">
                 <ButtonWide
                     icon={RxHamburgerMenu}

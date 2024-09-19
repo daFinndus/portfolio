@@ -48,7 +48,7 @@ const fetchNewsFromAPI = async () => {
     });
 
     // Update the news list
-    news = cache;
+    news.push(...cache);
 
     console.log("Fetched", news.length, "articles at", new Date());
   } catch (error) {

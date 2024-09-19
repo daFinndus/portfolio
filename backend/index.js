@@ -63,4 +63,5 @@ function reload() {
     });
 }
 
+// Comment this out while developing
 setInterval(reload, 1000 * 30);

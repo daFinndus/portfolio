@@ -5,7 +5,7 @@ import { FaInstagram } from "react-icons/fa6";
 
 const FooterUniversal = () => {
     return (
-        <footer className="relative flex h-40 w-full items-center justify-center bg-light-black p-4 text-cream-white">
+        <footer className="relative z-20 flex h-40 w-full items-center justify-center bg-light-black p-4 text-cream-white">
             <div className="flex flex-row space-x-10">
                 <a href="https://github.com/daFinndus">
                     <FaGithub className="size-10 hover:animate-blink" />

@@ -5,5 +5,6 @@
 
 Add frontend and backend services
 Add certain school reports
+Add dark and light mode
 Fetch news with the everything parameter, add pages for the articles, 9 articles per pages
 Add search function and predefined tags, like category
