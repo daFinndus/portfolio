@@ -1,7 +1,9 @@
 ✔ Change backend endpoints
 ✔ Fix paragraph overlapping with image in about
 ✔ Improve api requests
+✔ Add certificate and url
 
-Add certificate and url
+Add frontend and backend services
 Add certain school reports
-
+Fetch news with the everything parameter, add pages for the articles, 9 articles per pages
+Add search function and predefined tags, like category
