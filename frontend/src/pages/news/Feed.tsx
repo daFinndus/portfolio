@@ -1,7 +1,8 @@
 import { useState, useCallback, useEffect } from "react";
+import { TbExternalLink } from "react-icons/tb";
+import { FaSearch } from "react-icons/fa";
 
 import Throbber from "../../components/Throbber";
-import { TbExternalLink } from "react-icons/tb";
 
 interface FeedButtonInterface {
     url: string;
@@ -37,7 +38,7 @@ const FeedBlock = ({
     publishedAt,
 }: FeedBlockProps) => {
     return (
-        <div className="relative min-h-[472px] w-[312px] items-center justify-center bg-cream-white text-start text-dark-gray shadow-dark-black drop-shadow-2xl md:border-2 md:border-dark-gray">
+        <div className="relative h-[472px] w-[312px] items-center justify-center border-2 border-dark-gray bg-cream-white text-start text-dark-gray shadow-dark-black drop-shadow-2xl">
             <div className="flex flex-col">
                 <div className="relative flex h-[172px] w-full">
                     <p className="absolute bottom-6 bg-dark-gray px-5 text-cream-white">
@@ -54,7 +55,7 @@ const FeedBlock = ({
                         <p className="my-3 font-blenderpro text-lg text-dark-black">
                             {title}
                         </p>
-                        <div className="overflow-scroll">
+                        <div className="overflow-scroll bg-black">
                             <p>{description}</p>
                         </div>
                     </>
@@ -78,6 +79,7 @@ const Feed = () => {
     const [loading, setLoading] = useState(true);
     const [throbber, setThrobber] = useState(true);
 
+    const [parameter, setParameter] = useState("");
     const [news, setNews] = useState<FeedBlockProps[]>([]);
     const [error, setError] = useState({ visible: false, message: "" });
 
@@ -101,6 +103,15 @@ const Feed = () => {
             showError(message);
         },
         [showError],
+    );
+
+    // This function will handle the input change
+    const handleInputChange = useCallback(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            setParameter(e.target.value);
+            sortNews(news);
+        },
+        [],
     );
 
     // Function for toggling the throbber
@@ -130,6 +141,10 @@ const Feed = () => {
             if (!response.ok) throw new Error("Failed to fetch news");
 
             const data = await response.json();
+            console.log(typeof data);
+
+            // Sort the news by date
+            sortNews(data);
             setNews(data);
 
             // Toggle throbber to false
@@ -147,8 +162,31 @@ const Feed = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [handleError]);
 
+    // This function sorts the news by date - latest first
+    // It can also sort by an user entered parameter
+    const sortNews = (news) => {
+        news.sort((a, b) => {
+            return (
+                new Date(b.publishedAt).getTime() -
+                new Date(a.publishedAt).getTime()
+            );
+        });
+    };
+
     return (
-        <div className="flex w-screen items-center justify-center bg-cream-white bg-[radial-gradient(#060606,transparent_2px)] py-16 [background-size:32px_32px]">
+        <div className="flex w-screen flex-col items-center justify-center bg-cream-white bg-[radial-gradient(#060606,transparent_2px)] py-16 [background-size:32px_32px]">
+            <div className="mx-5 flex w-[512px] items-center justify-center">
+                <div className="relative mb-10 flex h-12 w-full flex-row items-center border-2 border-dark-gray bg-cream-white pl-3 text-lg text-dark-gray">
+                    <input
+                        className="mr-10 w-full bg-transparent placeholder-dark-gray placeholder-opacity-75 focus:outline-none"
+                        placeholder="Enter something to search for"
+                        onChange={handleInputChange}
+                    />
+                    <div className="mr-5">
+                        <FaSearch />
+                    </div>
+                </div>
+            </div>
             <div className="flex min-h-[768px] flex-col gap-y-10 sm:w-[612px] sm:grid-cols-2 sm:gap-x-3 md:grid lg:w-[1024px] lg:grid-cols-3">
                 <Throbber loading={loading} throbber={throbber} />
                 {news.map((article, _) => (
