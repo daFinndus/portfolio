@@ -13,7 +13,7 @@ interface ProjectBlockProps {
 
 const ProjectBlock = ({ alt, href, src, text, title }: ProjectBlockProps) => {
     return (
-        <div className="mb-10 flex h-auto w-3/5 min-w-[296px] flex-row items-center justify-center bg-cream-white p-5 text-center text-dark-gray shadow-dark-black drop-shadow-2xl md:relative md:w-3/4 md:max-w-2xl md:justify-between md:border-4 md:border-dark-gray md:p-0 md:text-right">
+        <div className="mb-10 flex h-auto w-3/5 min-w-[296px] flex-row items-center justify-center border-4 border-dark-gray bg-cream-white p-5 text-center text-dark-gray shadow-dark-black drop-shadow-2xl md:relative md:w-3/4 md:max-w-2xl md:justify-between md:p-0 md:text-right">
             <a href={href}>
                 <div className="flex flex-row items-center md:mr-3">
                     <img

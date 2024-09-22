@@ -14,8 +14,8 @@ const CustomLink = ({ href, text }: CustomLinkProps) => (
 const About = () => {
     return (
         <div className="flex h-screen min-h-[768px] w-screen items-center justify-center bg-cream-white bg-[radial-gradient(#060606,transparent_2px)] [background-size:32px_32px]">
-            <div className="relative flex flex-row items-center justify-center text-dark-gray drop-shadow-2xl md:h-auto md:w-3/5 md:border-4 md:border-dark-gray md:bg-cream-white md:px-10">
-                <div className="mx-3 mt-7 flex h-full max-w-xl flex-col items-center justify-center bg-cream-white p-3 text-center text-lg md:text-dark-gray lg:py-10">
+            <div className="relative mx-3 flex flex-row items-center justify-center border-4 border-dark-gray bg-cream-white pt-5 text-dark-gray drop-shadow-2xl md:h-auto md:w-3/5 md:px-10">
+                <div className="flex h-full max-w-xl flex-col items-center justify-center bg-cream-white p-3 text-center text-lg md:text-dark-gray lg:py-10">
                     <img
                         className="absolute left-0 top-0 hidden -translate-x-32 -translate-y-4 drop-shadow-2xl lg:table lg:h-60 lg:w-60 lg:-translate-x-36"
                         src={call}
