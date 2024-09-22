@@ -50,12 +50,12 @@ const FeedBlock = ({
                         alt="News from the API"
                     />
                 </div>
-                <div className="flex h-full w-full flex-col p-3 text-start md:mx-3 md:w-fit md:p-1">
+                <div className="flex h-[268px] w-full flex-col p-3 text-start md:mx-3 md:w-fit md:p-1">
                     <>
                         <p className="my-3 font-blenderpro text-lg text-dark-black">
                             {title}
                         </p>
-                        <div className="overflow-scroll bg-black">
+                        <div className="overflow-scroll">
                             <p>{description}</p>
                         </div>
                     </>
@@ -79,8 +79,13 @@ const Feed = () => {
     const [loading, setLoading] = useState(true);
     const [throbber, setThrobber] = useState(true);
 
-    const [parameter, setParameter] = useState("");
+    const [keyword, setKeyword] = useState(String);
+
+    // News are visible on the website
+    // Storage are all news from the API
     const [news, setNews] = useState<FeedBlockProps[]>([]);
+    const [storage, setStorage] = useState<FeedBlockProps[]>([]);
+
     const [error, setError] = useState({ visible: false, message: "" });
 
     const showError = useCallback((message: string) => {
@@ -108,11 +113,17 @@ const Feed = () => {
     // This function will handle the input change
     const handleInputChange = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
-            setParameter(e.target.value);
-            sortNews(news);
+            setKeyword(e.target.value); // Save the search keyword
         },
         [],
     );
+
+    // This function will handle the key down event
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            filterNews();
+        }
+    };
 
     // Function for toggling the throbber
     const toggleThrobber = (state: boolean) => {
@@ -141,11 +152,11 @@ const Feed = () => {
             if (!response.ok) throw new Error("Failed to fetch news");
 
             const data = await response.json();
-            console.log(typeof data);
 
             // Sort the news by date
-            sortNews(data);
+            setStorage(data);
             setNews(data);
+            sortNews();
 
             // Toggle throbber to false
             toggleThrobber(false);
@@ -163,8 +174,7 @@ const Feed = () => {
     }, [handleError]);
 
     // This function sorts the news by date - latest first
-    // It can also sort by an user entered parameter
-    const sortNews = (news) => {
+    const sortNews = () => {
         news.sort((a, b) => {
             return (
                 new Date(b.publishedAt).getTime() -
@@ -173,21 +183,38 @@ const Feed = () => {
         });
     };
 
+    // This function filters the news by the search parameter
+    const filterNews = () => {
+        if (keyword === "") {
+            setNews(storage);
+            return;
+        }
+
+        const filtered = storage.filter((article) =>
+            article.title.toLowerCase().includes(keyword.toLowerCase()),
+        );
+
+        setNews(filtered);
+    };
+
     return (
         <div className="flex w-screen flex-col items-center justify-center bg-cream-white bg-[radial-gradient(#060606,transparent_2px)] py-16 [background-size:32px_32px]">
-            <div className="mx-5 flex w-[512px] items-center justify-center">
-                <div className="relative mb-10 flex h-12 w-full flex-row items-center border-2 border-dark-gray bg-cream-white pl-3 text-lg text-dark-gray">
+            <div className="mx-5 flex w-3/4 min-w-[342px] items-center justify-center md:w-[512px]">
+                <div className="relative mb-16 flex h-12 w-full flex-row items-center border-2 border-dark-gray bg-cream-white pl-3 text-lg text-dark-gray">
                     <input
-                        className="mr-10 w-full bg-transparent placeholder-dark-gray placeholder-opacity-75 focus:outline-none"
-                        placeholder="Enter something to search for"
+                        className="mr-10 w-full overflow-auto bg-transparent placeholder-dark-gray placeholder-opacity-75 focus:outline-none"
+                        placeholder="Filter for keywords!"
                         onChange={handleInputChange}
+                        onKeyDown={handleKeyDown}
                     />
-                    <div className="mr-5">
-                        <FaSearch />
+                    <div className="mr-5 flex items-center justify-center">
+                        <button onClick={filterNews}>
+                            <FaSearch />
+                        </button>
                     </div>
                 </div>
             </div>
-            <div className="flex min-h-[768px] flex-col gap-y-10 sm:w-[612px] sm:grid-cols-2 sm:gap-x-3 md:grid lg:w-[1024px] lg:grid-cols-3">
+            <div className="flex flex-col gap-y-10 sm:w-[612px] sm:grid-cols-2 sm:gap-x-3 md:grid lg:w-[1024px] lg:grid-cols-3">
                 <Throbber loading={loading} throbber={throbber} />
                 {news.map((article, _) => (
                     <div className="flex items-center justify-center">
