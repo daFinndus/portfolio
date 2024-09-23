@@ -26,8 +26,8 @@ app.use(
 );
 
 // Call other scripts
-app.use("/articles", articles);
-app.use("/backend", backend);
+app.use("/", articles);
+app.use("/", backend);
 
 // Universal wrong request handler
 app.use((_, res) => {
