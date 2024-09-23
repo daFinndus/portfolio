@@ -47,6 +47,13 @@ const fetchNewsFromAPI = async () => {
       );
     });
 
+    // Remove articles, if they are already in the news list
+    for (let i = 0; i < cache.length; i++) {
+      if (news.some((article) => article.url === cache[i].url)) {
+        cache.splice(i, 1);
+      }
+    }
+
     // Update the news list
     news.push(...cache);
 

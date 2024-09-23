@@ -26,8 +26,8 @@ app.use(
 );
 
 // Call other scripts
-app.use("/", articles);
-app.use("/", backend);
+app.use("/articles", articles);
+app.use("/backend", backend);
 
 // Universal wrong request handler
 app.use((_, res) => {
@@ -63,5 +63,5 @@ function reload() {
     });
 }
 
-// Comment this out while developing
-setInterval(reload, 1000 * 30);
+// Ping the backend every 5 minutes to avoid spindown
+setInterval(reload, 1000 * 60 * 5);
