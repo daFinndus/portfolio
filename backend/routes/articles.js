@@ -48,16 +48,16 @@ const fetchNewsFromAPI = async () => {
     });
 
     // Remove articles, if they are already in the news list
-    for (let i = 0; i < cache.length; i++) {
-      if (news.some((article) => article.url === cache[i].url)) {
-        cache.splice(i, 1);
-      }
-    }
+    const titles = new Set(news.map((article) => article.title));
+    const length = cache.length;
+    cache = cache.filter((article) => !titles.has(article.title));
+    console.log("Removed", length - cache.length, "duplicates from cache");
 
     // Update the news list
     news.push(...cache);
 
-    console.log("Fetched", news.length, "articles at", new Date());
+    console.log("Fetched", cache.length, "articles at", new Date());
+    console.log("Total news count:", news.length);
   } catch (error) {
     console.error("Error fetching news:", error);
   }
