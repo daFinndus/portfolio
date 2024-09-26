@@ -7,6 +7,7 @@ import ButtonShort from "./ButtonShort";
 
 import { ImCross } from "react-icons/im";
 import { GoHomeFill } from "react-icons/go";
+import { IoIosSchool } from "react-icons/io";
 import { IoNewspaper } from "react-icons/io5";
 
 const SUBTITLE = [
@@ -80,6 +81,12 @@ const PageList = ({ close }: SideBarProps) => {
                                 onClick={() => routePage("/news")}
                                 text="News"
                                 title="Check the latest news"
+                            />
+                            <ButtonWide
+                                icon={IoIosSchool}
+                                onClick={() => routePage("/vitae")}
+                                text="Curriculum Vitae"
+                                title="Check out my curriculum vitae"
                             />
                             <div className="absolute right-0 top-0">
                                 <ButtonShort

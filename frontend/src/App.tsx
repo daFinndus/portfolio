@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Main from "./pages/main/Main";
 import News from "./pages/news/News";
+import Vitae from "./pages/vitae/Vitae";
 
 const Supported = () => {
     return (
@@ -10,6 +11,7 @@ const Supported = () => {
             <BrowserRouter>
                 <Routes>
                     <Route path="*" element={<Main />} />
+                    <Route path="/vitae" element={<Vitae />} />
                     <Route path="/news" element={<News />} />
                 </Routes>
             </BrowserRouter>

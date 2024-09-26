@@ -1,4 +1,4 @@
-import call from "../../assets/images/thailand.png";
+import thailand from "../../assets/images/thailand.png";
 
 interface CustomLinkProps {
     href: string;
@@ -18,7 +18,7 @@ const About = () => {
                 <div className="flex h-full max-w-xl flex-col items-center justify-center bg-cream-white p-3 text-center text-lg md:text-dark-gray lg:py-10">
                     <img
                         className="absolute left-0 top-0 hidden -translate-x-32 -translate-y-4 drop-shadow-2xl lg:table lg:h-60 lg:w-60 lg:-translate-x-36"
-                        src={call}
+                        src={thailand}
                         alt="Finn Luca Jensen"
                         title="That is me in Thailand on a small boat"
                     />
