@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import { TbExternalLink } from "react-icons/tb";
 import { FaSearch } from "react-icons/fa";
 
+import ButtonScroll from "../../components/ButtonScroll";
 import Throbber from "../../components/Throbber";
 
 interface FeedButtonInterface {
@@ -213,6 +214,9 @@ const Feed = () => {
                         </button>
                     </div>
                 </div>
+            </div>
+            <div className="fixed bottom-10 right-10 z-10">
+                <ButtonScroll />
             </div>
             <div className="flex min-h-[768px] flex-col gap-y-10 sm:w-[612px] sm:grid-cols-2 sm:gap-x-3 md:grid lg:w-[1024px] lg:grid-cols-3">
                 <Throbber loading={loading} throbber={throbber} />
