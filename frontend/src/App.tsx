@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import Main from "./pages/main/Main";
 import News from "./pages/news/News";
@@ -8,6 +9,7 @@ import Vitae from "./pages/vitae/Vitae";
 const Supported = () => {
     return (
         <>
+            <SpeedInsights />
             <BrowserRouter>
                 <Routes>
                     <Route path="*" element={<Main />} />
@@ -22,6 +24,7 @@ const Supported = () => {
 const Unsupported = () => {
     return (
         <div className="flex h-screen w-screen items-center justify-center bg-white text-black">
+            <SpeedInsights />
             Your device is not supported.
         </div>
     );
