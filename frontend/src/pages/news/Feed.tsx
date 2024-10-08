@@ -199,9 +199,9 @@ const Feed = () => {
     };
 
     return (
-        <div className="flex w-screen flex-col items-center justify-center bg-cream-white bg-[radial-gradient(#060606,transparent_2px)] py-16 [background-size:32px_32px]">
-            <div className="mx-5 flex w-3/4 min-w-[342px] items-center justify-center md:w-[512px]">
-                <div className="relative mb-16 flex h-12 w-full flex-row items-center border-2 border-dark-gray bg-cream-white pl-3 text-lg text-dark-gray">
+        <div className="relative flex w-screen flex-col items-center justify-center bg-cream-white bg-[radial-gradient(#060606,transparent_2px)] py-8 [background-size:32px_32px]">
+            <div className="mx-5 flex w-3/4 min-w-[342px] items-center justify-center pt-8 md:w-[512px]">
+                <div className="mb-16 flex h-12 w-full flex-row items-center border-2 border-dark-gray bg-cream-white pl-3 text-lg text-dark-gray">
                     <input
                         className="mr-10 w-full overflow-auto bg-transparent placeholder-dark-gray placeholder-opacity-75 focus:outline-none"
                         placeholder="Filter for keywords!"
@@ -215,10 +215,7 @@ const Feed = () => {
                     </div>
                 </div>
             </div>
-            <div className="fixed bottom-10 right-10 z-10">
-                <ButtonScroll />
-            </div>
-            <div className="flex min-h-[768px] flex-col gap-y-10 sm:w-[612px] sm:grid-cols-2 sm:gap-x-3 md:grid lg:w-[1024px] lg:grid-cols-3">
+            <div className="flex min-h-[768px] flex-col gap-y-10 pb-8 sm:w-[612px] sm:grid-cols-2 sm:gap-x-3 md:grid lg:w-[1024px] lg:grid-cols-3">
                 <Throbber loading={loading} throbber={throbber} />
                 {news.map((article, _) => (
                     <div className="flex items-center justify-center">
@@ -234,6 +231,7 @@ const Feed = () => {
                     </div>
                 ))}
             </div>
+            <ButtonScroll />
         </div>
     );
 };

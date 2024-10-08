@@ -4,7 +4,7 @@ import { useScramble } from "use-scramble";
 
 import InputField from "./InputField";
 import FormButton from "./FormButton";
-import PopupMessage from "./PopupMessage";
+import FormLoader from "./FormLoader";
 import ButtonShort from "./ButtonShort";
 
 import { ImCross } from "react-icons/im";
@@ -28,9 +28,9 @@ interface RegisterPopupProps {
 
 const RegisterPopup = ({ close, change }: RegisterPopupProps) => {
     const [greeting, setGreeting] = useState(getGreeting(""));
-    const [error, setError] = useState({ visible: false, message: "" });
-    const [req, setReq] = useState({
+    const [loader, setLoader] = useState({
         visible: false,
+        throbber: false,
         message: "",
     });
     const [formData, setFormData] = useState({
@@ -58,29 +58,51 @@ const RegisterPopup = ({ close, change }: RegisterPopupProps) => {
         return () => clearInterval(interval);
     }, [greeting]);
 
-    // This is for showing the error message
-    const showError = useCallback((message: string) => {
-        setError({ visible: true, message: message });
-    }, []);
+    // This is for showing the loading screen with a specific message
+    const toggleLoader = useCallback(
+        (state: boolean, message: string) => {
+            if (state === false) {
+                setLoader({
+                    visible: false,
+                    throbber: true,
+                    message: loader.message,
+                });
 
-    // This is for letting the error requirement fade away after 5s
+                setTimeout(() => {
+                    setLoader({
+                        visible: false,
+                        throbber: false,
+                        message: loader.message,
+                    });
+                }, 1500);
+            } else if (state === true) {
+                setLoader({
+                    visible: false,
+                    throbber: true,
+                    message: message,
+                });
+
+                setTimeout(() => {
+                    setLoader({
+                        visible: true,
+                        throbber: true,
+                        message: message,
+                    });
+                }, 500);
+            }
+        },
+        [loader],
+    );
+
     useEffect(() => {
-        if (error.visible) {
-            const timer = setTimeout(() => {
-                setError({ visible: false, message: error.message });
+        if (loader.visible) {
+            const timeout = setTimeout(() => {
+                toggleLoader(false, "");
             }, 5000);
 
-            return () => clearTimeout(timer);
+            return () => clearTimeout(timeout);
         }
-    }, [error]);
-
-    // This is for showing the requirement message
-    const showRequirement = useCallback(
-        (message: string) => {
-            setReq({ visible: !req.visible, message: message });
-        },
-        [req],
-    );
+    }, [loader, toggleLoader]);
 
     const handleInputChange = useCallback(
         (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -91,14 +113,14 @@ const RegisterPopup = ({ close, change }: RegisterPopupProps) => {
 
     const registerUser = useCallback(() => {
         const { email, username, password, confirm } = formData;
+        toggleLoader(true, "Register is not possible yet..");
 
         if (!validateRegistration(email, username, password, confirm)) {
-            showError(
-                "Invalid registration details. Please check and try again.",
-            );
             return;
         }
-    }, [formData, showError]);
+
+        console.log("Setting up the user now...");
+    }, [formData, toggleLoader]);
 
     return (
         <div className="fixed top-0 z-10 flex h-screen w-screen items-center justify-center bg-black bg-opacity-90">
@@ -115,68 +137,36 @@ const RegisterPopup = ({ close, change }: RegisterPopupProps) => {
                     <InputField
                         id="email"
                         limit={256}
-                        onBlur={() =>
-                            showRequirement(
-                                "The email needs to be a real, valid email address.",
-                            )
-                        }
+                        onBlur={() => {}}
                         onChange={handleInputChange("email")}
-                        onFocus={() =>
-                            showRequirement(
-                                "The email needs to be a real, valid email address.",
-                            )
-                        }
+                        onFocus={() => {}}
                         placeholder="Email"
                         value={formData.email}
                     />
                     <InputField
                         id="username"
                         limit={16}
-                        onBlur={() =>
-                            showRequirement(
-                                "The username can only contain letters, numbers, and underscores.",
-                            )
-                        }
+                        onBlur={() => {}}
                         onChange={handleInputChange("username")}
-                        onFocus={() =>
-                            showRequirement(
-                                "The username can only contain letters, numbers, and underscores.",
-                            )
-                        }
+                        onFocus={() => {}}
                         placeholder="Username"
                         value={formData.username}
                     />
                     <InputField
                         id="password"
                         limit={72}
-                        onBlur={() =>
-                            showRequirement(
-                                "Your password should contain at least 8 characters, including upper and lower case letters, numbers, and special characters.",
-                            )
-                        }
+                        onBlur={() => {}}
                         onChange={handleInputChange("password")}
-                        onFocus={() =>
-                            showRequirement(
-                                "Your password should contain at least 8 characters, including upper and lower case letters, numbers, and special characters.",
-                            )
-                        }
+                        onFocus={() => {}}
                         placeholder="Password"
                         value={formData.password}
                     />
                     <InputField
                         id="confirm"
                         limit={72}
-                        onBlur={() =>
-                            showRequirement(
-                                "Type the same password again for confirmation.",
-                            )
-                        }
+                        onBlur={() => {}}
                         onChange={handleInputChange("confirm")}
-                        onFocus={() =>
-                            showRequirement(
-                                "Type the same password again for confirmation.",
-                            )
-                        }
+                        onFocus={() => {}}
                         placeholder="Confirm Password"
                         value={formData.confirm}
                     />
@@ -203,17 +193,12 @@ const RegisterPopup = ({ close, change }: RegisterPopupProps) => {
                         disabled={false}
                     />
                 </div>
-                <PopupMessage
-                    id="req-message"
-                    text={req.message}
-                    visible={req.visible}
-                />
-                <PopupMessage
-                    id="err-message"
-                    text={error.message}
-                    visible={error.visible}
-                />
             </div>
+            <FormLoader
+                loading={loader.visible}
+                throbber={loader.throbber}
+                message={loader.message}
+            />
         </div>
     );
 };

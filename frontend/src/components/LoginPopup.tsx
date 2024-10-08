@@ -4,8 +4,8 @@ import { useScramble } from "use-scramble";
 
 import InputField from "./InputField";
 import FormButton from "./FormButton";
+import FormLoader from "./FormLoader";
 import ButtonShort from "./ButtonShort";
-import PopupMessage from "./PopupMessage";
 
 import { ImCross } from "react-icons/im";
 
@@ -30,7 +30,11 @@ interface LoginPopupProps {
 
 const LoginPopup: React.FC<LoginPopupProps> = ({ close, change }) => {
     const [greeting, setGreeting] = useState(getGreeting(""));
-    const [error, setError] = useState({ visible: false, message: "" });
+    const [loader, setLoader] = useState({
+        visible: false,
+        throbber: false,
+        message: "",
+    });
     const [formData, setFormData] = useState({
         username: "",
         password: "",
@@ -53,20 +57,51 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ close, change }) => {
         return () => clearInterval(interval);
     }, [greeting]);
 
-    // This is for showing the error message
-    const showError = useCallback((message: string) => {
-        setError({ visible: true, message: message });
-    }, []);
+    // This is for showing the loading screen with a specific message
+    const toggleLoader = useCallback(
+        (state: boolean, message: string) => {
+            if (state === false) {
+                setLoader({
+                    visible: false,
+                    throbber: true,
+                    message: loader.message,
+                });
+
+                setTimeout(() => {
+                    setLoader({
+                        visible: false,
+                        throbber: false,
+                        message: loader.message,
+                    });
+                }, 1500);
+            } else if (state === true) {
+                setLoader({
+                    visible: false,
+                    throbber: true,
+                    message: message,
+                });
+
+                setTimeout(() => {
+                    setLoader({
+                        visible: true,
+                        throbber: true,
+                        message: message,
+                    });
+                }, 500);
+            }
+        },
+        [loader],
+    );
 
     useEffect(() => {
-        if (error.visible) {
-            const timer = setTimeout(() => {
-                setError({ visible: false, message: error.message });
-            }, 3000); // Hide after 3 seconds
+        if (loader.visible) {
+            const timeout = setTimeout(() => {
+                toggleLoader(false, "");
+            }, 5000);
 
-            return () => clearTimeout(timer);
+            return () => clearTimeout(timeout);
         }
-    }, [error]);
+    }, [loader, toggleLoader]);
 
     const handleInputChange = useCallback(
         (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -77,16 +112,15 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ close, change }) => {
 
     const loginUser = useCallback(() => {
         const { username, password } = formData;
+        toggleLoader(true, "Login is not possible yet..");
 
         if (!validateLogin(username, password)) {
-            showError("Invalid username or password");
             return;
         }
 
-        // Do the login here
+        // Hier sollte die tatsächliche Login-Logik sein
         console.log("Check database entries now..");
-        showError("This feature is not implemented yet");
-    }, [formData, showError]);
+    }, [formData, toggleLoader]);
 
     return (
         <div className="fixed top-0 z-10 flex h-screen w-screen items-center justify-center bg-black bg-opacity-90">
@@ -135,7 +169,9 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ close, change }) => {
                         disabled={false}
                     />
                     <FormButton
-                        onClick={() => showError("This is not implemented yet")}
+                        onClick={() =>
+                            toggleLoader(true, "This is not implemented yet..")
+                        }
                         text="Forgot password?"
                         title="This is the forgot password button"
                         disabled={false}
@@ -147,12 +183,12 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ close, change }) => {
                         disabled={false}
                     />
                 </div>
-                <PopupMessage
-                    id="err-message"
-                    text={error.message}
-                    visible={error.visible}
-                />
             </div>
+            <FormLoader
+                loading={loader.visible}
+                throbber={loader.throbber}
+                message={loader.message}
+            />
         </div>
     );
 };

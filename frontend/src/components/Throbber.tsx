@@ -19,6 +19,7 @@ const Throbber = ({ loading, throbber }: ThrobberProps) => {
                     <l-grid size="128" speed="1.5" color="#fcfbf4"></l-grid>
                 </div>
             </div>
+            
         </div>
     );
 };
