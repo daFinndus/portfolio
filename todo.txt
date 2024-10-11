@@ -2,10 +2,14 @@
 ✔ Fix paragraph overlapping with image in about
 ✔ Improve api requests
 ✔ Add certificate and url
+✔ Make website more responsive
+✔ Add search function
+
+✘ Limit news to nine articles per page
 
 Add frontend and backend services
 Add certain school reports
-Make website more responsive
 Add dark and light mode
-Limit news to nine articles per page
-Add search function
+Add explanation and walkthroughs for htb machines
+Add `have i been pwnded` api
+
