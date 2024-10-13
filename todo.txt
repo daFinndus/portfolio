@@ -7,9 +7,10 @@
 
 ✘ Limit news to nine articles per page
 
+Add smooth scrolling for scroll to top button in news page
+Add dark and light mode
 Add frontend and backend services
 Add certain school reports
-Add dark and light mode
-Add explanation and walkthroughs for htb machines
 Add `have i been pwnded` api
+Add explanation and walkthroughs for htb machines
 
