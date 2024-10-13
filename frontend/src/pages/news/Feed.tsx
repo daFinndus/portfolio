@@ -157,7 +157,7 @@ const Feed = () => {
             // Sort the news by date
             setStorage(data);
             setNews(data);
-            sortNews();
+            reverseNews();
 
             // Toggle throbber to false
             toggleThrobber(false);
@@ -174,14 +174,9 @@ const Feed = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [handleError]);
 
-    // This function sorts the news by date - latest first
-    const sortNews = () => {
-        news.sort((a, b) => {
-            return (
-                new Date(b.publishedAt).getTime() -
-                new Date(a.publishedAt).getTime()
-            );
-        });
+    // This function reverses the news array
+    const reverseNews = () => {
+        news.reverse();
     };
 
     // This function filters the news by the search parameter
