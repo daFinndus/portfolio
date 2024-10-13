@@ -12,7 +12,6 @@ const ButtonScroll = () => {
     };
 
     const handleButton = () => {
-        console.log("Scrollheight is:", height);
         setHeight(window.scrollY);
 
         if (height > 500) {

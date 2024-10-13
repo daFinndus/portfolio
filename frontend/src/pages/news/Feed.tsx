@@ -152,12 +152,13 @@ const Feed = () => {
             const response = await fetch(`${url}/articles`);
             if (!response.ok) throw new Error("Failed to fetch news");
 
+            // Set the data and reverse it
             const data = await response.json();
+            data.reverse();
 
-            // Sort the news by date
+            // Backup data and set the news
             setStorage(data);
             setNews(data);
-            reverseNews();
 
             // Toggle throbber to false
             toggleThrobber(false);
@@ -174,14 +175,9 @@ const Feed = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [handleError]);
 
-    // This function reverses the news array
-    const reverseNews = () => {
-        news.reverse();
-    };
-
     // This function filters the news by the search parameter
     const filterNews = () => {
-        if (keyword === "") {
+        if (!keyword) {
             setNews(storage);
             return;
         }

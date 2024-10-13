@@ -6,6 +6,9 @@ module.exports = {
     content: ["./src/**/*.{js,jsx,ts,tsx}"],
     theme: {
         extend: {
+            screens: {
+                timeline: "1170px",
+            },
             cursor: {
                 arrow: "url(./assets/cursors/arrow.cur)",
                 link: "url(./assets/cursors/link.cur)",

@@ -21,7 +21,7 @@ const Timeline = () => {
                             className={event.className}
                             contentStyle={event.contentStyle}
                             contentArrowStyle={event.contentArrowStyle}
-                            dateClassName="text-dark-black"
+                            dateClassName="text-cream-white timeline:text-dark-gray"
                         >
                             <h3 className="vertical-timeline-element-title">
                                 {event.title}
