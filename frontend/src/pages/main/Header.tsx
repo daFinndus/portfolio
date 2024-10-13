@@ -9,6 +9,7 @@ import RegisterPopup from "../../components/RegisterPopup";
 
 import { FaUser } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
+import ThemeButton from "../../components/ThemeButton";
 
 const Header = () => {
     const [list, setList] = useState(false);
@@ -26,6 +27,7 @@ const Header = () => {
 
     return (
         <header className="relative flex h-40 w-full items-center justify-center bg-light-black p-4 text-cream-white">
+            <ThemeButton />
             <div className="absolute left-4 hidden flex-col items-center justify-center lg:flex">
                 <ButtonWide
                     icon={FaUser}

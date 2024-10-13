@@ -4,6 +4,7 @@ import PageList from "./PageList";
 import Clock from "./DigitalClock";
 import ButtonWide from "./ButtonWide";
 import ButtonShort from "./ButtonShort";
+import ThemeButton from "./ThemeButton";
 
 import { RxHamburgerMenu } from "react-icons/rx";
 
@@ -16,6 +17,7 @@ const HeaderUniversal = ({ title }: HeaderProps) => {
 
     return (
         <header className="relative z-20 flex h-40 w-full items-center justify-center bg-light-black p-4 text-cream-white">
+            <ThemeButton />
             <div className="absolute left-4 hidden flex-col items-center justify-center lg:flex">
                 <ButtonWide
                     icon={RxHamburgerMenu}

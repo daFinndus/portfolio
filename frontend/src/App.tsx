@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import Main from "./pages/main/Main";
@@ -9,6 +11,7 @@ import Vitae from "./pages/vitae/Vitae";
 const Supported = () => {
     return (
         <>
+            <Analytics />
             <SpeedInsights />
             <BrowserRouter>
                 <Routes>
