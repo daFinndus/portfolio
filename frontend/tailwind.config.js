@@ -33,6 +33,7 @@ module.exports = {
                 "dark-gray": "#3c3c3c",
                 "medium-gray": "#545454",
                 "light-gray": "#818181",
+                "dark-white": "#dbdbd5",
                 "cream-white": "#fcfbf4",
             },
             keyframes: {

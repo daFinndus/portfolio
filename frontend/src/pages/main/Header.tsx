@@ -26,7 +26,7 @@ const Header = () => {
     }, []);
 
     return (
-        <header className="relative flex h-40 w-full items-center justify-center bg-light-black p-4 text-cream-white">
+        <header className="bg-dark-white relative flex h-40 w-full items-center justify-center p-4 text-dark-gray dark:bg-light-black dark:text-cream-white">
             <ThemeButton />
             <div className="absolute left-4 hidden flex-col items-center justify-center lg:flex">
                 <ButtonWide

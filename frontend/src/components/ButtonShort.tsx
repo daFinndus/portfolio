@@ -15,7 +15,11 @@ const ButtonShort = ({
 }: ButtonShortProps) => {
     return (
         <div
-            className={`group m-3 flex h-12 w-12 cursor-link duration-700 hover:duration-0 ${border ? "border-2 border-cream-white hover:bg-cream-white hover:bg-opacity-25" : ""}`}
+            className={`group m-3 flex h-12 w-12 cursor-link duration-700 hover:duration-0 ${
+                border
+                    ? "border-2 border-dark-gray hover:bg-dark-gray hover:bg-opacity-25 dark:border-cream-white dark:hover:bg-cream-white dark:hover:bg-opacity-25"
+                    : ""
+            }`}
         >
             <button
                 title={title}
