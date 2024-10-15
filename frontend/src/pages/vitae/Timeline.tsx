@@ -17,20 +17,30 @@ import { LuShoppingBasket } from "react-icons/lu";
 const Timeline = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);
 
-    // useEffect to watch for dark mode changes
     useEffect(() => {
-        const observer = new MutationObserver(() => {
+        // Function to update the grid color based on the "dark" class on the body
+        const updateIsDarkMode = () => {
             setIsDarkMode(document.body.classList.contains("dark"));
+        };
+
+        // Set initial color based on the current class
+        updateIsDarkMode();
+
+        // Create a MutationObserver to detect changes in the body's class attribute
+        const observer = new MutationObserver(() => {
+            updateIsDarkMode();
         });
 
-        // Observe the body for changes in class attribute
+        // Observe the body element for class attribute changes
         observer.observe(document.body, {
             attributes: true,
             attributeFilter: ["class"],
         });
 
-        // Clean up observer on unmount
-        return () => observer.disconnect();
+        // Cleanup the observer when the component is unmounted
+        return () => {
+            observer.disconnect();
+        };
     }, []);
 
     const timeline = [
