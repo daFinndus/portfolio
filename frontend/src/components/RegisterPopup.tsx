@@ -124,12 +124,12 @@ const RegisterPopup = ({ close, change }: RegisterPopupProps) => {
 
     return (
         <div className="fixed top-0 z-10 flex h-screen w-screen items-center justify-center bg-black bg-opacity-90">
-            <div className="relative flex h-fit w-full max-w-[512px] flex-col items-center justify-center border-4 bg-light-black px-3">
+            <div className="relative flex h-fit w-full max-w-[512px] flex-col items-center justify-center border-2 border-dark-gray bg-dark-white px-3 dark:border-cream-white dark:bg-light-black">
                 <div className="mb-16 mt-10 flex items-center justify-center">
-                    <h1 className="font-cyberpunk text-2xl text-cream-white shadow-light-gray text-shadow-sm lg:text-3xl">
+                    <h1 className="font-cyberpunk text-2xl text-dark-gray shadow-light-gray text-shadow-sm dark:text-cream-white lg:text-3xl">
                         Hola
                     </h1>
-                    <h3 className="absolute top-20 text-lg text-cream-white">
+                    <h3 className="absolute top-20 text-lg">
                         <span ref={ref}></span>
                     </h3>
                 </div>

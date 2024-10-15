@@ -13,11 +13,11 @@ interface ProjectBlockProps {
 
 const ProjectBlock = ({ alt, href, src, text, title }: ProjectBlockProps) => {
     return (
-        <div className="mb-10 flex h-auto w-3/5 min-w-[296px] flex-row items-center justify-center border-4 border-dark-gray bg-cream-white p-5 text-center text-dark-gray shadow-dark-black drop-shadow-2xl md:relative md:w-3/4 md:max-w-2xl md:justify-between md:p-0 md:text-right">
+        <div className="mb-10 flex h-auto w-3/5 min-w-[296px] flex-row items-center justify-center border-4 border-dark-gray bg-cream-white p-5 text-center shadow-dark-black drop-shadow-2xl dark:bg-medium-gray md:relative md:w-3/4 md:max-w-2xl md:justify-between md:p-0 md:text-right">
             <a href={href}>
                 <div className="flex flex-row items-center md:mr-3">
                     <img
-                        className="mr-10 hidden h-56 w-56 p-5 drop-shadow-2xl md:table"
+                        className="mr-10 hidden h-56 w-56 p-5 shadow-dark-black drop-shadow-xl md:table"
                         src={src}
                         alt={alt}
                     />
@@ -35,7 +35,7 @@ const ProjectBlock = ({ alt, href, src, text, title }: ProjectBlockProps) => {
 
 const Projects: React.FC = () => {
     return (
-        <div className="flex h-screen min-h-[768px] w-screen flex-col items-center justify-center bg-cream-white bg-[radial-gradient(#060606,transparent_2px)] [background-size:32px_32px]">
+        <div className="flex h-screen min-h-[768px] w-screen flex-col items-center justify-center bg-cream-white bg-[radial-gradient(#3c3c3c,transparent_2px)] text-dark-gray [background-size:32px_32px] dark:bg-medium-gray dark:bg-[radial-gradient(#fcfbf4,transparent_2px)] dark:text-cream-white">
             <ProjectBlock
                 href="https://github.com/daFinndus/beerpong"
                 title="Beerpong Tracker"

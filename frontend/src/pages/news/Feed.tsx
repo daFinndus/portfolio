@@ -39,10 +39,10 @@ const FeedBlock = ({
     publishedAt,
 }: FeedBlockProps) => {
     return (
-        <div className="relative h-[472px] w-[312px] items-center justify-center border-2 border-dark-gray bg-cream-white text-start text-dark-gray shadow-dark-black drop-shadow-2xl">
+        <div className="relative h-[472px] w-[312px] items-center justify-center border-2 border-dark-gray bg-cream-white text-start text-dark-gray shadow-dark-black drop-shadow-2xl dark:border-cream-white dark:bg-dark-gray dark:text-cream-white">
             <div className="flex flex-col">
                 <div className="relative flex h-[172px] w-full">
-                    <p className="absolute bottom-6 bg-dark-gray px-5 text-cream-white">
+                    <p className="absolute bottom-6 bg-dark-gray px-5 text-cream-white dark:bg-cream-white dark:text-dark-gray">
                         {publisher}
                     </p>
                     <img
@@ -53,15 +53,13 @@ const FeedBlock = ({
                 </div>
                 <div className="flex h-[268px] w-full flex-col p-3 text-start md:mx-3 md:w-fit md:p-1">
                     <>
-                        <p className="my-3 font-blenderpro text-lg text-dark-black">
-                            {title}
-                        </p>
+                        <p className="my-3 font-blenderpro text-lg">{title}</p>
                         <div className="overflow-scroll">
                             <p>{description}</p>
                         </div>
                     </>
                 </div>
-                <div className="absolute bottom-1 left-3">
+                <div className="absolute bottom-1 left-3 h-6 w-[90%] overflow-x-scroll">
                     <p>
                         {author} - {publishedAt}
                     </p>
@@ -190,11 +188,11 @@ const Feed = () => {
     };
 
     return (
-        <div className="relative flex w-screen flex-col items-center justify-center bg-cream-white bg-[radial-gradient(#060606,transparent_2px)] py-8 [background-size:32px_32px]">
+        <div className="relative flex w-screen flex-col items-center justify-center bg-cream-white bg-[radial-gradient(#3c3c3c,transparent_2px)] py-8 [background-size:32px_32px] dark:bg-dark-gray dark:bg-[radial-gradient(#dbdbd5,transparent_2px)]">
             <div className="mx-5 flex w-3/4 min-w-[342px] items-center justify-center pt-8 md:w-[512px]">
-                <div className="mb-16 flex h-12 w-full flex-row items-center border-2 border-dark-gray bg-cream-white pl-3 text-lg text-dark-gray">
+                <div className="mb-16 flex h-12 w-full flex-row items-center border-2 border-dark-gray bg-cream-white pl-3 text-lg text-dark-gray dark:border-dark-white dark:bg-dark-gray dark:text-cream-white">
                     <input
-                        className="mr-10 w-full overflow-auto bg-transparent placeholder-dark-gray placeholder-opacity-75 focus:outline-none"
+                        className="mr-10 w-full overflow-auto bg-transparent placeholder-dark-gray placeholder-opacity-75 focus:outline-none dark:placeholder-cream-white dark:placeholder-opacity-75"
                         placeholder="Filter for keywords!"
                         onChange={handleInputChange}
                         onKeyDown={handleKeyDown}

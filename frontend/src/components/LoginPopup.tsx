@@ -124,12 +124,12 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ close, change }) => {
 
     return (
         <div className="fixed top-0 z-10 flex h-screen w-screen items-center justify-center bg-black bg-opacity-90">
-            <div className="relative flex h-fit w-full max-w-[512px] flex-col items-center justify-center border-4 bg-light-black px-3">
+            <div className="relative flex h-fit w-full max-w-[512px] flex-col items-center justify-center border-2 border-dark-gray bg-dark-white px-3 text-dark-gray dark:border-cream-white dark:bg-light-black dark:text-cream-white">
                 <div className="mb-16 mt-10 flex flex-col items-center justify-center">
-                    <h1 className="font-cyberpunk text-2xl text-cream-white shadow-light-gray text-shadow-sm lg:text-3xl">
+                    <h1 className="font-cyberpunk text-2xl shadow-light-gray text-shadow-sm lg:text-3xl">
                         Dive deep
                     </h1>
-                    <h3 className="absolute top-20 flex w-full justify-center text-lg text-cream-white">
+                    <h3 className="absolute top-20 flex w-full justify-center text-lg">
                         <span ref={ref}></span>
                     </h3>
                 </div>

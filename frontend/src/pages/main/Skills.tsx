@@ -19,9 +19,9 @@ import {
 
 const Skills: React.FC = () => {
     return (
-        <div className="flex h-screen min-h-[912px] w-screen items-center justify-center bg-dark-gray bg-[radial-gradient(#fcfbf4,transparent_2px)] [background-size:32px_32px]">
-            <div className="mx-3 flex flex-row items-center justify-center border-4 border-cream-white bg-dark-gray text-cream-white drop-shadow-2xl md:h-auto md:w-3/5 md:min-w-max md:px-10 md:pb-10">
-                <div className="mx-3 mt-7 flex h-full w-full max-w-96 flex-col items-center justify-center bg-dark-gray pb-5 text-center text-lg md:p-0 lg:px-0">
+        <div className="flex h-screen min-h-[912px] w-screen items-center justify-center bg-dark-white bg-[radial-gradient(#3c3c3c,transparent_2px)] [background-size:32px_32px] dark:bg-dark-gray dark:bg-[radial-gradient(#fcfbf4,transparent_2px)]">
+            <div className="mx-3 flex flex-row items-center justify-center border-4 border-cream-white bg-dark-white text-dark-gray drop-shadow-2xl dark:bg-dark-gray dark:text-cream-white md:h-auto md:w-3/5 md:min-w-max md:px-10 md:pb-10">
+                <div className="mx-3 mt-7 flex h-full w-full max-w-96 flex-col items-center justify-center pb-5 text-center text-lg md:p-0 lg:px-0">
                     <h1 className="mb-7 font-cyberpunk text-3xl shadow-light-black text-shadow-sm">
                         Skills
                     </h1>

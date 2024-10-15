@@ -27,7 +27,7 @@ const InputField = ({
     };
 
     return (
-        <div className="relative flex h-12 w-full flex-row items-center border-2 border-cream-white bg-light-black pl-3 text-lg text-cream-white">
+        <div className="relative flex h-12 w-full flex-row items-center border-2 border-dark-gray bg-dark-white pl-3 text-lg text-dark-gray dark:border-cream-white dark:bg-light-black dark:text-cream-white">
             <input
                 id={id}
                 value={value}
@@ -36,11 +36,9 @@ const InputField = ({
                 onBlur={onBlur}
                 placeholder={placeholder}
                 maxLength={limit}
-                className="mr-10 w-full bg-transparent placeholder-cream-white placeholder-opacity-75 focus:outline-none"
+                className="mr-10 w-full bg-transparent placeholder-dark-gray placeholder-opacity-75 focus:outline-none dark:placeholder-cream-white"
             />
-            <p className="absolute right-2 text-cream-white text-opacity-75">
-                {remaining}
-            </p>
+            <p className="absolute right-2 text-opacity-75">{remaining}</p>
         </div>
     );
 };
