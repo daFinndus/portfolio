@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { validateRegistration } from "../utils/validation";
-import { useScramble } from "use-scramble";
+import React, {useState, useEffect, useCallback} from "react";
+import {validateRegistration} from "../utils/validation";
+import {useScramble} from "use-scramble";
 
+import Throbber from "./Throbber";
 import InputField from "./InputField";
 import FormButton from "./FormButton";
-import FormLoader from "./FormLoader";
 import ButtonShort from "./ButtonShort";
 
-import { ImCross } from "react-icons/im";
+import {ImCross} from "react-icons/im";
 
 const GREETINGS = [
     "Welcome to daFinndus'",
@@ -26,7 +26,7 @@ interface RegisterPopupProps {
     change: () => void;
 }
 
-const RegisterPopup = ({ close, change }: RegisterPopupProps) => {
+const RegisterPopup = ({close, change}: RegisterPopupProps) => {
     const [greeting, setGreeting] = useState(getGreeting(""));
     const [loader, setLoader] = useState({
         visible: false,
@@ -40,7 +40,7 @@ const RegisterPopup = ({ close, change }: RegisterPopupProps) => {
         confirm: "",
     });
 
-    const { ref } = useScramble({
+    const {ref} = useScramble({
         text: greeting,
         tick: 1,
         seed: 3,
@@ -106,13 +106,13 @@ const RegisterPopup = ({ close, change }: RegisterPopupProps) => {
 
     const handleInputChange = useCallback(
         (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-            setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+            setFormData((prev) => ({...prev, [field]: e.target.value}));
         },
         [],
     );
 
     const registerUser = useCallback(() => {
-        const { email, username, password, confirm } = formData;
+        const {email, username, password, confirm} = formData;
         toggleLoader(true, "Register is not possible yet..");
 
         if (!validateRegistration(email, username, password, confirm)) {
@@ -124,7 +124,8 @@ const RegisterPopup = ({ close, change }: RegisterPopupProps) => {
 
     return (
         <div className="fixed top-0 z-10 flex h-screen w-screen items-center justify-center bg-black bg-opacity-90">
-            <div className="relative flex h-fit w-full max-w-[512px] flex-col items-center justify-center border-2 border-dark-gray bg-dark-white px-3 dark:border-cream-white dark:bg-light-black">
+            <div
+                className="relative flex h-fit w-full max-w-[512px] flex-col items-center justify-center border-2 border-dark-gray bg-dark-white px-3 dark:border-cream-white dark:bg-light-black">
                 <div className="mb-16 mt-10 flex items-center justify-center">
                     <h1 className="font-cyberpunk text-2xl text-dark-gray shadow-light-gray text-shadow-sm dark:text-cream-white lg:text-3xl">
                         Hola
@@ -137,36 +138,44 @@ const RegisterPopup = ({ close, change }: RegisterPopupProps) => {
                     <InputField
                         id="email"
                         limit={256}
-                        onBlur={() => {}}
+                        onBlur={() => {
+                        }}
                         onChange={handleInputChange("email")}
-                        onFocus={() => {}}
+                        onFocus={() => {
+                        }}
                         placeholder="Email"
                         value={formData.email}
                     />
                     <InputField
                         id="username"
                         limit={16}
-                        onBlur={() => {}}
+                        onBlur={() => {
+                        }}
                         onChange={handleInputChange("username")}
-                        onFocus={() => {}}
+                        onFocus={() => {
+                        }}
                         placeholder="Username"
                         value={formData.username}
                     />
                     <InputField
                         id="password"
                         limit={72}
-                        onBlur={() => {}}
+                        onBlur={() => {
+                        }}
                         onChange={handleInputChange("password")}
-                        onFocus={() => {}}
+                        onFocus={() => {
+                        }}
                         placeholder="Password"
                         value={formData.password}
                     />
                     <InputField
                         id="confirm"
                         limit={72}
-                        onBlur={() => {}}
+                        onBlur={() => {
+                        }}
                         onChange={handleInputChange("confirm")}
-                        onFocus={() => {}}
+                        onFocus={() => {
+                        }}
                         placeholder="Confirm Password"
                         value={formData.confirm}
                     />
@@ -194,10 +203,10 @@ const RegisterPopup = ({ close, change }: RegisterPopupProps) => {
                     />
                 </div>
             </div>
-            <FormLoader
+            <Throbber
                 loading={loader.visible}
-                throbber={loader.throbber}
                 message={loader.message}
+                throbber={loader.throbber}
             />
         </div>
     );

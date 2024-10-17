@@ -11,6 +11,6 @@ Add smooth scrolling for scroll to top button in news page
 Add dark and light mode
 Add frontend and backend services
 Add certain school reports
+Add database for storing api results
 Add `have i been pwnded` api
 Add explanation and walkthroughs for htb machines
-

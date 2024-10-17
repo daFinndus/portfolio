@@ -205,7 +205,7 @@ const Feed = () => {
                 </div>
             </div>
             <div className="flex min-h-[768px] flex-col gap-y-10 pb-8 sm:w-[612px] sm:grid-cols-2 sm:gap-x-3 md:grid lg:w-[1024px] lg:grid-cols-3">
-                <Throbber loading={loading} throbber={throbber} />
+                <Throbber loading={loading} message={""} throbber={throbber} />
                 {news.map((article, _) => (
                     <div className="flex items-center justify-center">
                         <FeedBlock

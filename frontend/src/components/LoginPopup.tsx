@@ -4,7 +4,7 @@ import { useScramble } from "use-scramble";
 
 import InputField from "./InputField";
 import FormButton from "./FormButton";
-import FormLoader from "./FormLoader";
+import Throbber from "./Throbber"
 import ButtonShort from "./ButtonShort";
 
 import { ImCross } from "react-icons/im";
@@ -184,7 +184,7 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ close, change }) => {
                     />
                 </div>
             </div>
-            <FormLoader
+            <Throbber
                 loading={loader.visible}
                 throbber={loader.throbber}
                 message={loader.message}
