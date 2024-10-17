@@ -1,5 +1,5 @@
-import {useEffect, useState} from "react";
-import {grid} from "ldrs";
+import { useEffect, useState } from "react";
+import { grid } from "ldrs";
 
 grid.register();
 
@@ -9,7 +9,7 @@ interface ThrobberProps {
     message: string;
 }
 
-const Throbber = ({loading, throbber, message}: ThrobberProps) => {
+const Throbber = ({ loading, throbber, message }: ThrobberProps) => {
     const [color, setColor] = useState("#3c3c3c"); // Default color
 
     useEffect(() => {
@@ -30,7 +30,7 @@ const Throbber = ({loading, throbber, message}: ThrobberProps) => {
         // Observe the body element for class attribute changes
         observer.observe(document.body, {
             attributes: true,
-            attributeFilter: ["class"],
+            attributeFilter: ["class"]
         });
 
         // Cleanup the observer when the component is unmounted
@@ -51,12 +51,10 @@ const Throbber = ({loading, throbber, message}: ThrobberProps) => {
                     <l-grid size="128" speed="1.5" color={color}></l-grid>
                 </div>
             </div>
-            if (message) {
             <div
                 className="absolute bottom-[282px] h-fit w-max bg-dark-white px-4 py-2 text-center shadow-dark-black drop-shadow-2xl dark:bg-dark-gray">
                 <p className="animate-blink text-xl">{message}</p>
             </div>
-        }
         </div>
     );
 };
