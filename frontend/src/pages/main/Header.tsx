@@ -3,14 +3,18 @@ import { useCallback, useState } from "react";
 import PageList from "../../components/PageList";
 import Clock from "../../components/DigitalClock";
 import ButtonWide from "../../components/ButtonWide";
-import ButtonShort from "../../components/ButtonShort";
 import LoginPopup from "../../components/LoginPopup";
+import ButtonShort from "../../components/ButtonShort";
+import ThemeButton from "../../components/ThemeButton";
 import RegisterPopup from "../../components/RegisterPopup";
 
 import { FaUser } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
-import ThemeButton from "../../components/ThemeButton";
 
+/**
+ * This is the header component for the home page
+ * @constructor
+ */
 const Header = () => {
     const [list, setList] = useState(false);
     const [formState, setFormState] = useState({
@@ -18,6 +22,9 @@ const Header = () => {
         register: false,
     });
 
+    /**
+     * This function toggles the login and register forms
+     */
     const toggleForm = useCallback(() => {
         setFormState((prevState) => ({
             login: !prevState.login,
@@ -26,7 +33,7 @@ const Header = () => {
     }, []);
 
     return (
-        <header className="bg-dark-white relative flex h-40 w-full items-center justify-center p-4 text-dark-gray dark:bg-light-black dark:text-cream-white">
+        <header className="relative flex h-40 w-full items-center justify-center bg-dark-white p-4 text-dark-gray dark:bg-light-black dark:text-cream-white">
             <ThemeButton />
             <div className="absolute left-4 hidden flex-col items-center justify-center lg:flex">
                 <ButtonWide

@@ -1,14 +1,21 @@
-import { useState, useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { TbExternalLink } from "react-icons/tb";
 import { FaSearch } from "react-icons/fa";
 
-import ButtonScroll from "../../components/ButtonScroll";
 import Throbber from "../../components/Throbber";
+import ButtonScrollToTop from "../../components/ButtonScrollToTop";
+
+import useLoader from "../../hooks/useLoader";
+import delay from "../../utils/delay";
 
 interface FeedButtonInterface {
     url: string;
 }
 
+/**
+ * This component is a button that will redirect to the article.
+ * @param url - the url of the article
+ */
 const FeedButton = ({ url }: FeedButtonInterface) => {
     return (
         <div className="group w-fit cursor-link border-2 border-transparent duration-700 hover:bg-opacity-25 hover:duration-0">
@@ -29,6 +36,16 @@ interface FeedBlockProps {
     publishedAt: string;
 }
 
+/**
+ * This component is a block that will display the news.
+ * @param author - the author of the article
+ * @param title - the title of the article
+ * @param publisher - the publisher of the article
+ * @param description - the description of the article
+ * @param url - the url of the article
+ * @param urlToImage - the image of the article
+ * @param publishedAt - the date of the article
+ */
 const FeedBlock = ({
     author,
     title,
@@ -72,11 +89,18 @@ const FeedBlock = ({
     );
 };
 
+/**
+ * This component is the feed page that will display the news.
+ * @constructor
+ */
 const Feed = () => {
     // Loading is true while fetching the news
     // Or if no news are available
-    const [loading, setLoading] = useState(true);
-    const [throbber, setThrobber] = useState(true);
+    const { loader, toggleLoader, updateMessage } = useLoader({
+        visible: true,
+        throbber: true,
+        message: "Fetching articles...",
+    });
 
     const [keyword, setKeyword] = useState(String);
 
@@ -85,31 +109,9 @@ const Feed = () => {
     const [news, setNews] = useState<FeedBlockProps[]>([]);
     const [storage, setStorage] = useState<FeedBlockProps[]>([]);
 
-    const [error, setError] = useState({ visible: false, message: "" });
-
-    const showError = useCallback((message: string) => {
-        setError({ visible: true, message });
-    }, []);
-
-    useEffect(() => {
-        if (error.visible) {
-            const timer = setTimeout(() => {
-                setError({ visible: false, message: "" });
-            }, 3000);
-            return () => clearTimeout(timer);
-        }
-    }, [error]);
-
-    // Function for showing the error message
-    const handleError = useCallback(
-        (message: string) => {
-            console.error(message);
-            showError(message);
-        },
-        [showError],
-    );
-
-    // This function will handle the input change
+    /**
+     * This function will handle the input change event.
+     */
     const handleInputChange = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
             setKeyword(e.target.value); // Save the search keyword
@@ -117,27 +119,13 @@ const Feed = () => {
         [],
     );
 
-    // This function will handle the key down event
+    /**
+     * This function will handle the key down event.
+     * @param e - the event
+     */
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
             filterNews();
-        }
-    };
-
-    // Function for toggling the throbber
-    const toggleThrobber = (state: boolean) => {
-        if (state === false) {
-            setLoading(false);
-
-            setTimeout(() => {
-                setThrobber(false);
-            }, 1500);
-        } else if (state === true) {
-            setThrobber(true);
-
-            setTimeout(() => {
-                setLoading(true);
-            }, 500);
         }
     };
 
@@ -145,13 +133,24 @@ const Feed = () => {
     // For localhost it will be an empty string
     const url = process.env.REACT_APP_RENDER_URL || "";
 
+    /**
+     * This function will fetch the news from the NewsAPI.
+     */
     const fetchNews = async () => {
         try {
             const response = await fetch(`${url}/articles`);
-            if (!response.ok) throw new Error("Failed to fetch news");
+            if (!response.ok) {
+                console.error(response);
+                toggleLoader(true, "There was an error fetching the articles!");
+            }
 
             // Set the data and reverse it
             const data = await response.json();
+
+            if (!data) {
+                updateMessage("There are currently no articles available!");
+            }
+
             data.reverse();
 
             // Backup data and set the news
@@ -159,21 +158,21 @@ const Feed = () => {
             setNews(data);
 
             // Toggle throbber to false
-            toggleThrobber(false);
+            await delay(500);
+            toggleLoader(false, "");
         } catch (err) {
-            handleError("An error occurred while fetching news");
-
             console.log(err);
+            updateMessage("There was an error fetching the articles!");
         }
     };
 
     useEffect(() => {
-        fetchNews();
+        fetchNews().then((r) => r);
+    }, []);
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [handleError]);
-
-    // This function filters the news by the search parameter
+    /**
+     * This function will filter the news based on the keyword.
+     */
     const filterNews = () => {
         if (!keyword) {
             setNews(storage);
@@ -205,7 +204,11 @@ const Feed = () => {
                 </div>
             </div>
             <div className="flex min-h-[768px] flex-col gap-y-10 pb-8 sm:w-[612px] sm:grid-cols-2 sm:gap-x-3 md:grid lg:w-[1024px] lg:grid-cols-3">
-                <Throbber loading={loading} message={""} throbber={throbber} />
+                <Throbber
+                    loading={loader.visible}
+                    message={loader.message}
+                    throbber={loader.throbber}
+                />
                 {news.map((article, _) => (
                     <div className="flex items-center justify-center">
                         <FeedBlock
@@ -220,7 +223,7 @@ const Feed = () => {
                     </div>
                 ))}
             </div>
-            <ButtonScroll />
+            <ButtonScrollToTop />
         </div>
     );
 };

@@ -1,15 +1,26 @@
-import { isStrongPassword, isEmail } from "validator";
+import { isEmail, isStrongPassword } from "validator";
 
-// This function used the isEmail function from validator
+/**
+ * This function uses the validator library to check if the email is valid.
+ * @param email - the email to be checked
+ */
 const validateEmail = (email: string) => isEmail(email);
 
-// This function uses a regular expression to limit the username to
-// 16 characters and only allow alphanumeric characters and underscores
+/**
+ * This function checks if the username is valid with a regex.
+ * The username must be between 1 and 16 characters long and can only contain letters, numbers and underscores.
+ * @param username - the username to be checked
+ */
 const validateUsername = (username: string) =>
     /^[a-zA-Z0-9_]{1,16}$/.test(username);
 
-// This function checks if the password is strong enough, if the password
-// and the confirmation match and if the password is not too big regarding bytes
+/**
+ * This function checks if the password is valid.
+ * The password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number and one special character.
+ * It also can't be bigger than 72 bytes.
+ * @param password - the password to be checked
+ * @param confirm - the second password to be checked
+ */
 const validatePassword = (password: string, confirm: string) => {
     if (password !== confirm) {
         console.log("Passwords do not match");
@@ -32,7 +43,11 @@ const validatePassword = (password: string, confirm: string) => {
     return true;
 };
 
-// Here we'll check for a valid username and a fitting password for hashing
+/**
+ * This function checks if the login is valid.
+ * @param username - the username to be checked
+ * @param password - the password to be checked
+ */
 export const validateLogin = (username: string, password: string) => {
     if (!validateUsername(username)) {
         console.log("Invalid username");
@@ -50,7 +65,13 @@ export const validateLogin = (username: string, password: string) => {
     return true;
 };
 
-// Here we'll check for a valid mail, valid username and valid password
+/**
+ * This function checks if the registration is valid.
+ * @param email - the email to be checked
+ * @param username - the username to be checked
+ * @param password - the password to be checked
+ * @param confirm - the second password to be checked
+ */
 export const validateRegistration = (
     email: string,
     username: string,

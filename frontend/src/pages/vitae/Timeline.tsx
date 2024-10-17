@@ -1,28 +1,30 @@
 import "react-vertical-timeline-component/style.min.css";
-import {
-    VerticalTimeline,
-    VerticalTimelineElement
-} from "react-vertical-timeline-component";
-import React, { useState, useEffect } from "react";
+import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
+import React, { useEffect, useState } from "react";
 
-import { FaBaby } from "react-icons/fa";
+import { FaBaby, FaHospitalAlt } from "react-icons/fa";
 import { IoFootball } from "react-icons/io5";
 import { IoIosSchool } from "react-icons/io";
 import { GiFullPizza } from "react-icons/gi";
 import { SiHackthebox } from "react-icons/si";
-import { FaHospitalAlt } from "react-icons/fa";
 import { HiShoppingCart } from "react-icons/hi2";
 import { LuShoppingBasket } from "react-icons/lu";
 
+/**
+ * Component to display a timeline of my education and work experience.
+ */
 const Timeline = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);
 
-    useEffect(() => {
-        // Function to update the grid color based on the "dark" class on the body
-        const updateIsDarkMode = () => {
-            setIsDarkMode(document.body.classList.contains("dark"));
-        };
+    /**
+     * Function to update the isDarkMode state based on the body's class attribute.
+     * It basically updates the state based on the current body's class.
+     */
+    const updateIsDarkMode = () => {
+        setIsDarkMode(document.body.classList.contains("dark"));
+    };
 
+    useEffect(() => {
         // Set initial color based on the current class
         updateIsDarkMode();
 
@@ -34,7 +36,7 @@ const Timeline = () => {
         // Observe the body element for class attribute changes
         observer.observe(document.body, {
             attributes: true,
-            attributeFilter: ["class"]
+            attributeFilter: ["class"],
         });
 
         // Cleanup the observer when the component is unmounted
@@ -43,6 +45,9 @@ const Timeline = () => {
         };
     }, []);
 
+    /**
+     * Timeline data to display.
+     */
     const timeline = [
         {
             date: "2024 - present",
@@ -56,7 +61,7 @@ const Timeline = () => {
                 boxShadow: isDarkMode
                     ? "0 0 0 3px #dbdbd5"
                     : "0 0 0 3px #818181",
-                color: isDarkMode ? "#dbdbd5" : "#818181"
+                color: isDarkMode ? "#dbdbd5" : "#818181",
             },
             className: "vertical-timeline-element--education",
             contentStyle: {
@@ -64,11 +69,11 @@ const Timeline = () => {
                 boxShadow: isDarkMode
                     ? "0 0 0 3px #545454"
                     : "0 0 0 3px #dbdbd5",
-                color: isDarkMode ? "#fcfbf4" : "#3c3c3c"
+                color: isDarkMode ? "#fcfbf4" : "#3c3c3c",
             },
             contentArrowStyle: {
-                borderRight: `7px solid ${isDarkMode ? "#545454" : "#dbdbd5"}`
-            }
+                borderRight: `7px solid ${isDarkMode ? "#545454" : "#dbdbd5"}`,
+            },
         },
         {
             date: "2022 - present",
@@ -82,7 +87,7 @@ const Timeline = () => {
                 boxShadow: isDarkMode
                     ? "0 0 0 3px #dbdbd5"
                     : "0 0 0 3px #545454",
-                color: isDarkMode ? "#fcfbf4" : "#3c3c3c"
+                color: isDarkMode ? "#fcfbf4" : "#3c3c3c",
             },
             className: "vertical-timeline-element--education",
             contentStyle: {
@@ -90,11 +95,11 @@ const Timeline = () => {
                 boxShadow: isDarkMode
                     ? "0 0 0 3px #222222"
                     : "0 0 0 3px #818181",
-                color: isDarkMode ? "#fcfbf4" : "#222222"
+                color: isDarkMode ? "#fcfbf4" : "#222222",
             },
             contentArrowStyle: {
-                borderRight: `7px solid ${isDarkMode ? "#222222" : "#818181"}`
-            }
+                borderRight: `7px solid ${isDarkMode ? "#222222" : "#818181"}`,
+            },
         },
         {
             date: "2021 - 2022",
@@ -108,7 +113,7 @@ const Timeline = () => {
                 boxShadow: isDarkMode
                     ? "0 0 0 3px #dbdbd5"
                     : "0 0 0 3px #818181",
-                color: isDarkMode ? "#dbdbd5" : "#818181"
+                color: isDarkMode ? "#dbdbd5" : "#818181",
             },
             className: "vertical-timeline-element--work",
             contentStyle: {
@@ -116,11 +121,11 @@ const Timeline = () => {
                 boxShadow: isDarkMode
                     ? "0 0 0 3px #545454"
                     : "0 0 0 3px #dbdbd5",
-                color: isDarkMode ? "#fcfbf4" : "#3c3c3c"
+                color: isDarkMode ? "#fcfbf4" : "#3c3c3c",
             },
             contentArrowStyle: {
-                borderRight: `7px solid ${isDarkMode ? "#545454" : "#dbdbd5"}`
-            }
+                borderRight: `7px solid ${isDarkMode ? "#545454" : "#dbdbd5"}`,
+            },
         },
         {
             date: "2019",
@@ -134,7 +139,7 @@ const Timeline = () => {
                 boxShadow: isDarkMode
                     ? "0 0 0 3px #dbdbd5"
                     : "0 0 0 3px #818181",
-                color: isDarkMode ? "#dbdbd5" : "#818181"
+                color: isDarkMode ? "#dbdbd5" : "#818181",
             },
             className: "vertical-timeline-element--work",
             contentStyle: {
@@ -142,11 +147,11 @@ const Timeline = () => {
                 boxShadow: isDarkMode
                     ? "0 0 0 3px #545454"
                     : "0 0 0 3px #dbdbd5",
-                color: isDarkMode ? "#fcfbf4" : "#3c3c3c"
+                color: isDarkMode ? "#fcfbf4" : "#3c3c3c",
             },
             contentArrowStyle: {
-                borderRight: `7px solid ${isDarkMode ? "#545454" : "#dbdbd5"}`
-            }
+                borderRight: `7px solid ${isDarkMode ? "#545454" : "#dbdbd5"}`,
+            },
         },
         {
             date: "2019",
@@ -160,7 +165,7 @@ const Timeline = () => {
                 boxShadow: isDarkMode
                     ? "0 0 0 3px #dbdbd5"
                     : "0 0 0 3px #818181",
-                color: isDarkMode ? "#dbdbd5" : "#818181"
+                color: isDarkMode ? "#dbdbd5" : "#818181",
             },
             className: "vertical-timeline-element--work",
             contentStyle: {
@@ -168,11 +173,11 @@ const Timeline = () => {
                 boxShadow: isDarkMode
                     ? "0 0 0 3px #545454"
                     : "0 0 0 3px #dbdbd5",
-                color: isDarkMode ? "#fcfbf4" : "#3c3c3c"
+                color: isDarkMode ? "#fcfbf4" : "#3c3c3c",
             },
             contentArrowStyle: {
-                borderRight: `7px solid ${isDarkMode ? "#545454" : "#dbdbd5"}`
-            }
+                borderRight: `7px solid ${isDarkMode ? "#545454" : "#dbdbd5"}`,
+            },
         },
         {
             date: "2017",
@@ -186,7 +191,7 @@ const Timeline = () => {
                 boxShadow: isDarkMode
                     ? "0 0 0 3px #dbdbd5"
                     : "0 0 0 3px #818181",
-                color: isDarkMode ? "#dbdbd5" : "#818181"
+                color: isDarkMode ? "#dbdbd5" : "#818181",
             },
             className: "vertical-timeline-element--work",
             contentStyle: {
@@ -194,11 +199,11 @@ const Timeline = () => {
                 boxShadow: isDarkMode
                     ? "0 0 0 3px #545454"
                     : "0 0 0 3px #dbdbd5",
-                color: isDarkMode ? "#fcfbf4" : "#3c3c3c"
+                color: isDarkMode ? "#fcfbf4" : "#3c3c3c",
             },
             contentArrowStyle: {
-                borderRight: `7px solid ${isDarkMode ? "#545454" : "#dbdbd5"}`
-            }
+                borderRight: `7px solid ${isDarkMode ? "#545454" : "#dbdbd5"}`,
+            },
         },
         {
             date: "2013 - 2020",
@@ -212,7 +217,7 @@ const Timeline = () => {
                 boxShadow: isDarkMode
                     ? "0 0 0 3px #dbdbd5"
                     : "0 0 0 3px #545454",
-                color: isDarkMode ? "#fcfbf4" : "#3c3c3c"
+                color: isDarkMode ? "#fcfbf4" : "#3c3c3c",
             },
             className: "vertical-timeline-element--education",
             contentStyle: {
@@ -220,11 +225,11 @@ const Timeline = () => {
                 boxShadow: isDarkMode
                     ? "0 0 0 3px #222222"
                     : "0 0 0 3px #818181",
-                color: isDarkMode ? "#fcfbf4" : "#222222"
+                color: isDarkMode ? "#fcfbf4" : "#222222",
             },
             contentArrowStyle: {
-                borderRight: `7px solid ${isDarkMode ? "#222222" : "#818181"}`
-            }
+                borderRight: `7px solid ${isDarkMode ? "#222222" : "#818181"}`,
+            },
         },
         {
             date: "2009 - 2013",
@@ -238,7 +243,7 @@ const Timeline = () => {
                 boxShadow: isDarkMode
                     ? "0 0 0 3px #dbdbd5"
                     : "0 0 0 3px #545454",
-                color: isDarkMode ? "#fcfbf4" : "#3c3c3c"
+                color: isDarkMode ? "#fcfbf4" : "#3c3c3c",
             },
             className: "vertical-timeline-element--education",
             contentStyle: {
@@ -246,11 +251,11 @@ const Timeline = () => {
                 boxShadow: isDarkMode
                     ? "0 0 0 3px #222222"
                     : "0 0 0 3px #818181",
-                color: isDarkMode ? "#fcfbf4" : "#222222"
+                color: isDarkMode ? "#fcfbf4" : "#222222",
             },
             contentArrowStyle: {
-                borderRight: `7px solid ${isDarkMode ? "#222222" : "#818181"}`
-            }
+                borderRight: `7px solid ${isDarkMode ? "#222222" : "#818181"}`,
+            },
         },
         {
             date: "2008 - 2020",
@@ -264,7 +269,7 @@ const Timeline = () => {
                 boxShadow: isDarkMode
                     ? "0 0 0 3px #dbdbd5"
                     : "0 0 0 3px #818181",
-                color: isDarkMode ? "#dbdbd5" : "#818181"
+                color: isDarkMode ? "#dbdbd5" : "#818181",
             },
             className: "vertical-timeline-element--work",
             contentStyle: {
@@ -272,17 +277,16 @@ const Timeline = () => {
                 boxShadow: isDarkMode
                     ? "0 0 0 3px #545454"
                     : "0 0 0 3px #dbdbd5",
-                color: isDarkMode ? "#fcfbf4" : "#3c3c3c"
+                color: isDarkMode ? "#fcfbf4" : "#3c3c3c",
             },
             contentArrowStyle: {
-                borderRight: `7px solid ${isDarkMode ? "#545454" : "#dbdbd5"}`
-            }
-        }
+                borderRight: `7px solid ${isDarkMode ? "#545454" : "#dbdbd5"}`,
+            },
+        },
     ];
 
     return (
-        <div
-            className="flex w-screen flex-col items-center justify-center bg-cream-white bg-[radial-gradient(#060606,transparent_1px)] py-16 font-blenderpro [background-size:32px_32px] dark:bg-dark-gray dark:bg-[radial-gradient(#fcfbf4,transparent_1px)]">
+        <div className="flex w-screen flex-col items-center justify-center bg-cream-white bg-[radial-gradient(#060606,transparent_1px)] py-16 font-blenderpro [background-size:32px_32px] dark:bg-dark-gray dark:bg-[radial-gradient(#fcfbf4,transparent_1px)]">
             <div className="w-4/5 lg:w-[1024px]">
                 <VerticalTimeline
                     lineColor={isDarkMode ? "#222222" : "#dbdbd5"}
@@ -310,7 +314,7 @@ const Timeline = () => {
                     <VerticalTimelineElement
                         iconStyle={{
                             background: "#3c3c3c",
-                            color: "#fcfbf4"
+                            color: "#fcfbf4",
                         }}
                         icon={<FaBaby />}
                     />

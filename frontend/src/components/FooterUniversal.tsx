@@ -1,8 +1,9 @@
 import { FaGithub } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaLinkedin } from "react-icons/fa6";
-import { FaInstagram } from "react-icons/fa6";
+import { FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
+/**
+ * This is an universal footer component that is used on all pages.
+ */
 const FooterUniversal = () => {
     return (
         <footer className="relative z-20 flex h-40 w-full items-center justify-center bg-dark-white p-4 text-dark-gray dark:bg-light-black dark:text-cream-white">

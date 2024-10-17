@@ -12,6 +12,10 @@ interface HeaderProps {
     title: string;
 }
 
+/**
+ * This is an universal header component that is used in nearly all pages.
+ * @param title - the title of the page
+ */
 const HeaderUniversal = ({ title }: HeaderProps) => {
     const [list, setList] = useState(false);
 

@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useScramble } from "use-scramble";
 import { useNavigate } from "react-router-dom";
 
@@ -10,6 +10,9 @@ import { GoHomeFill } from "react-icons/go";
 import { IoIosSchool } from "react-icons/io";
 import { IoNewspaper } from "react-icons/io5";
 
+/**
+ * Subtitles that are displayed to the user
+ */
 const SUBTITLE = [
     "Come to see all pages!",
     "Check out my page",
@@ -20,6 +23,10 @@ const SUBTITLE = [
     "Love you for seeing around",
 ];
 
+/**
+ * Get a random subtitle from the list
+ * @param subtitle - the current subtitle
+ */
 const getSubtitle = (subtitle: string) => {
     const temp = SUBTITLE.filter((tagline) => tagline !== subtitle);
     return temp[Math.floor(Math.random() * temp.length)];
@@ -29,6 +36,10 @@ interface SideBarProps {
     close: () => void;
 }
 
+/**
+ * The page list component
+ * @param close - the function to close the sidebar
+ */
 const PageList = ({ close }: SideBarProps) => {
     const navigate = useNavigate();
     const [subtitle, setSubtitle] = useState(getSubtitle(""));
@@ -50,6 +61,9 @@ const PageList = ({ close }: SideBarProps) => {
         return () => clearInterval(interval);
     }, [subtitle]);
 
+    /**
+     * Route to a specific page
+     */
     const routePage = useCallback(
         (path: string) => {
             console.log("Trying to redirect to:", path);

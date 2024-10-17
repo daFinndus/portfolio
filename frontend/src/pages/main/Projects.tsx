@@ -11,6 +11,14 @@ interface ProjectBlockProps {
     title: string;
 }
 
+/**
+ * This is a component to display a project.
+ * @param alt - the alt text for the image
+ * @param href - the link to the project
+ * @param src - the source of the image
+ * @param text - the text to display
+ * @param title - the title of the project
+ */
 const ProjectBlock = ({ alt, href, src, text, title }: ProjectBlockProps) => {
     return (
         <div className="mb-10 flex h-auto w-3/5 min-w-[296px] flex-row items-center justify-center border-4 border-dark-gray bg-cream-white p-5 text-center shadow-dark-black drop-shadow-2xl dark:bg-medium-gray md:relative md:w-3/4 md:max-w-2xl md:justify-between md:p-0 md:text-right">
@@ -33,6 +41,9 @@ const ProjectBlock = ({ alt, href, src, text, title }: ProjectBlockProps) => {
     );
 };
 
+/**
+ * This is the projects component.
+ */
 const Projects: React.FC = () => {
     return (
         <div className="flex h-screen min-h-[768px] w-screen flex-col items-center justify-center bg-cream-white bg-[radial-gradient(#3c3c3c,transparent_2px)] text-dark-gray [background-size:32px_32px] dark:bg-medium-gray dark:bg-[radial-gradient(#fcfbf4,transparent_2px)] dark:text-cream-white">

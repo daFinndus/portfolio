@@ -5,6 +5,11 @@ interface CustomLinkProps {
     text: string;
 }
 
+/**
+ * This is a custom link component that styles the link to match the design of the website.
+ * @param href - the link to redirect to
+ * @param text - the text to display
+ */
 const CustomLink = ({ href, text }: CustomLinkProps) => (
     <a
         href={href}
@@ -14,6 +19,9 @@ const CustomLink = ({ href, text }: CustomLinkProps) => (
     </a>
 );
 
+/**
+ * This is the about page of the website.
+ */
 const About = () => {
     return (
         <div className="flex h-screen min-h-[768px] w-screen items-center justify-center bg-cream-white bg-[radial-gradient(#3c3c3c,transparent_2px)] [background-size:32px_32px] dark:bg-medium-gray dark:bg-[radial-gradient(#fcfbf4,transparent_2px)]">

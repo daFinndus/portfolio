@@ -10,6 +10,16 @@ interface InputFieldProps {
     value: string;
 }
 
+/**
+ * This is an input field component.
+ * @param id - the id of the input field
+ * @param limit - the character limit of the input field
+ * @param onBlur - the function to call when the input field loses focus
+ * @param onChange - the function to call when the input field changes
+ * @param onFocus - the function to call when the input field gains focus
+ * @param placeholder - the placeholder text of the input field
+ * @param value - the value of the input field
+ */
 const InputField = ({
     id,
     limit,

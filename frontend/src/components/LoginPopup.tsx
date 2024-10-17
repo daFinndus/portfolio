@@ -1,14 +1,20 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { validateLogin } from "../utils/validation";
 import { useScramble } from "use-scramble";
 
 import InputField from "./InputField";
 import FormButton from "./FormButton";
-import Throbber from "./Throbber"
+import Throbber from "./Throbber";
 import ButtonShort from "./ButtonShort";
+
+import useLoader from "../hooks/useLoader";
+import delay from "../utils/delay";
 
 import { ImCross } from "react-icons/im";
 
+/**
+ * Greetings that are displayed to the user
+ */
 const GREETINGS = [
     "Welcome back, Choom!",
     "Hello, Samurai!",
@@ -18,6 +24,10 @@ const GREETINGS = [
     "48 65 6C 6C 6F",
 ];
 
+/**
+ * Get a random greeting from the list
+ * @param greeting - the current greeting
+ */
 const getGreeting = (greeting: string) => {
     const temp = GREETINGS.filter((salute) => salute !== greeting);
     return temp[Math.floor(Math.random() * temp.length)];
@@ -28,13 +38,19 @@ interface LoginPopupProps {
     change: () => void;
 }
 
+/**
+ * The login popup component
+ * @param close - the function to close the popup
+ * @param change - the function to change the form to register
+ */
 const LoginPopup: React.FC<LoginPopupProps> = ({ close, change }) => {
-    const [greeting, setGreeting] = useState(getGreeting(""));
-    const [loader, setLoader] = useState({
+    const { loader, toggleLoader, updateMessage } = useLoader({
         visible: false,
         throbber: false,
         message: "",
     });
+
+    const [greeting, setGreeting] = useState(getGreeting(""));
     const [formData, setFormData] = useState({
         username: "",
         password: "",
@@ -57,42 +73,6 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ close, change }) => {
         return () => clearInterval(interval);
     }, [greeting]);
 
-    // This is for showing the loading screen with a specific message
-    const toggleLoader = useCallback(
-        (state: boolean, message: string) => {
-            if (state === false) {
-                setLoader({
-                    visible: false,
-                    throbber: true,
-                    message: loader.message,
-                });
-
-                setTimeout(() => {
-                    setLoader({
-                        visible: false,
-                        throbber: false,
-                        message: loader.message,
-                    });
-                }, 1500);
-            } else if (state === true) {
-                setLoader({
-                    visible: false,
-                    throbber: true,
-                    message: message,
-                });
-
-                setTimeout(() => {
-                    setLoader({
-                        visible: true,
-                        throbber: true,
-                        message: message,
-                    });
-                }, 500);
-            }
-        },
-        [loader],
-    );
-
     useEffect(() => {
         if (loader.visible) {
             const timeout = setTimeout(() => {
@@ -103,6 +83,9 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ close, change }) => {
         }
     }, [loader, toggleLoader]);
 
+    /**
+     * Function for handling an input change
+     */
     const handleInputChange = useCallback(
         (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
             setFormData((prev) => ({ ...prev, [field]: e.target.value }));
@@ -110,17 +93,29 @@ const LoginPopup: React.FC<LoginPopupProps> = ({ close, change }) => {
         [],
     );
 
-    const loginUser = useCallback(() => {
+    /**
+     * Function for logging in the user
+     */
+    const loginUser = useCallback(async () => {
+        // Delay the function to make bruteforce attacks inefficient
+        toggleLoader(true, "Trying to login now...");
+        await delay(1500);
+
         const { username, password } = formData;
-        toggleLoader(true, "Login is not possible yet..");
+
+        // Delay the function to show the loading screen
+        updateMessage("You cannot login yet..");
+        await delay(1500);
 
         if (!validateLogin(username, password)) {
+            console.log("Going to return the login function now...");
+            toggleLoader(false, "");
             return;
         }
 
-        // Hier sollte die tatsächliche Login-Logik sein
         console.log("Check database entries now..");
-    }, [formData, toggleLoader]);
+        toggleLoader(false, "");
+    }, [formData, toggleLoader, updateMessage]);
 
     return (
         <div className="fixed top-0 z-10 flex h-screen w-screen items-center justify-center bg-black bg-opacity-90">

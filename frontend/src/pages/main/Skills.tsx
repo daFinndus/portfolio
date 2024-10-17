@@ -5,18 +5,11 @@ import { GrMysql } from "react-icons/gr";
 import { IoLogoJavascript, IoLogoPython } from "react-icons/io";
 import { RiFirebaseFill, RiFlutterFill } from "react-icons/ri";
 import { SiHackthebox } from "react-icons/si";
-import {
-    FaApple,
-    FaDocker,
-    FaGitAlt,
-    FaJava,
-    FaLinux,
-    FaNodeJs,
-    FaNpm,
-    FaReact,
-    FaWindows,
-} from "react-icons/fa";
+import { FaApple, FaDocker, FaGitAlt, FaJava, FaLinux, FaNodeJs, FaNpm, FaReact, FaWindows } from "react-icons/fa";
 
+/**
+ * This is the skills component.
+ */
 const Skills: React.FC = () => {
     return (
         <div className="flex h-screen min-h-[912px] w-screen items-center justify-center bg-dark-white bg-[radial-gradient(#3c3c3c,transparent_2px)] [background-size:32px_32px] dark:bg-dark-gray dark:bg-[radial-gradient(#fcfbf4,transparent_2px)]">

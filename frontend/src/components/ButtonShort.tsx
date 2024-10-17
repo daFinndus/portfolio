@@ -7,6 +7,13 @@ interface ButtonShortProps {
     title: string;
 }
 
+/**
+ * This a small rectangular button with an icon.
+ * @param border - if true, the button will have a border.
+ * @param onClick - function to be called when the button is clicked.
+ * @param Icon - icon to be displayed in the button.
+ * @param title - title of the button.
+ */
 const ButtonShort = ({
     border,
     onClick,

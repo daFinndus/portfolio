@@ -1,9 +1,12 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 
 import { AiFillSun } from "react-icons/ai";
 import { IoMdMoon } from "react-icons/io";
 
+/**
+ * This is the theme button component that toggles between light and dark mode.
+ */
 const ThemeButton = () => {
     const [cookies, setCookie] = useCookies(["dark"]);
     const [dark, setDark] = useState(cookies.dark);
@@ -23,7 +26,10 @@ const ThemeButton = () => {
         }
     }, [dark, cookies.dark]);
 
-    // Toggle dark mode
+    /**
+     * This function toggles the dark mode on and off.
+     * It also sets the cookie to the new dark mode state.
+     */
     const darkModeHandler = () => {
         setDark((prevDark: boolean) => {
             const newDark = !prevDark;
@@ -35,8 +41,7 @@ const ThemeButton = () => {
     };
 
     return (
-        <div
-            className="group absolute right-2 top-2 flex h-8 w-8 cursor-link text-dark-gray duration-700 hover:duration-0 dark:text-cream-white">
+        <div className="group absolute right-2 top-2 flex h-8 w-8 cursor-link text-dark-gray duration-700 hover:duration-0 dark:text-cream-white">
             <button
                 className="flex w-full items-center justify-center bg-transparent text-left uppercase focus:outline-none"
                 onClick={darkModeHandler}
