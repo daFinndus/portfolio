@@ -170,7 +170,7 @@ const Feed = () => {
         fetchNews()
             .then(() => console.log("Fetched news!"))
             .catch((error) => console.error(error));
-    }, [fetchNews]);
+    }, []);
 
     /**
      * This function will filter the news based on the keyword.
