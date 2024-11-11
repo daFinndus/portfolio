@@ -39,7 +39,7 @@ app.listen(port, () => {
 // Connect to the database
 database.connect()
     .then(() => console.log("Connected to database."))
-    .catch((err) => console.log("Database connection error:", err));
+    .catch((error) => console.log("Database connection error:", error));
 
 // This function reloads the server to avoid renders spindown issue
 function reload() {

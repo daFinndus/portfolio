@@ -138,7 +138,7 @@ const Feed = () => {
      */
     const fetchNews = async () => {
         try {
-            const response = await fetch(`${url}/articles`);
+            const response = await fetch(`${url}/news`);
             if (!response.ok) {
                 console.error(response);
                 toggleLoader(true, "There was an error fetching the articles!");
@@ -167,8 +167,10 @@ const Feed = () => {
     };
 
     useEffect(() => {
-        fetchNews().then((r) => r);
-    }, []);
+        fetchNews()
+            .then(() => console.log("Fetched news!"))
+            .catch((error) => console.error(error));
+    }, [fetchNews]);
 
     /**
      * This function will filter the news based on the keyword.
